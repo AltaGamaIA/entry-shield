@@ -49,13 +49,15 @@ export default function IdScanner({ visitorId, nextRoute = "/occupancy", onUploa
     if (videoRef.current && canvasRef.current) {
       const video = videoRef.current;
       const canvas = canvasRef.current;
-      // Set canvas to match video intrinsic dimensions
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
+      // Downscale to prevent 1MB Vercel server action payload limit truncation
+      const maxW = 800;
+      const ratio = video.videoHeight / video.videoWidth;
+      canvas.width = maxW;
+      canvas.height = maxW * ratio;
       const ctx = canvas.getContext("2d");
       if (ctx) {
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        const base64 = canvas.toDataURL("image/jpeg", 0.9);
+        const base64 = canvas.toDataURL("image/jpeg", 0.7);
         setPhoto(base64);
         
         // Stop the camera tracks to freeze the image

@@ -76,10 +76,16 @@ export default function VideoUploader({ visitorId, onUploadSuccess, onAgePredict
       const video = videoRef.current;
       const canvas = canvasRef.current;
       // Set canvas to match video intrinsic dimensions
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
+      // Downscale Selfie to fit within 1MB payload limits
+      const maxW = 600;
+      const ratio = video.videoHeight / video.videoWidth;
+      canvas.width = maxW;
+      canvas.height = maxW * ratio;
       const ctx = canvas.getContext("2d");
       if (ctx) {
+        ctx.save();
+        ctx.scale(-1, 1);
+        ctx.translate(-canvas.width, 0);
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         const base64 = canvas.toDataURL("image/jpeg", 0.9);
         setPhoto(base64);
