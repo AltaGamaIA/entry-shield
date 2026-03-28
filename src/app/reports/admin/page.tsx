@@ -26,10 +26,10 @@ export default async function AdminReportsPage() {
   type PropertyVisitCount = { id: string; count: bigint | number };
   const propertyVisitCounts = await prisma.$queryRaw<PropertyVisitCount[]>`
     SELECT p.id, COUNT(v.id) as count
-    FROM Property p
-    LEFT JOIN Reservation r ON r.propertyId = p.id
-    LEFT JOIN Visitor vis ON vis.reservationId = r.id
-    LEFT JOIN Visit v ON v.visitorId = vis.id
+    FROM "Property" p
+    LEFT JOIN "Reservation" r ON r."propertyId" = p.id
+    LEFT JOIN "Visitor" vis ON vis."reservationId" = r.id
+    LEFT JOIN "Visit" v ON v."visitorId" = vis.id
     GROUP BY p.id
   `;
 
