@@ -65,19 +65,34 @@ export default function DocumentListClient({ visitors }: { visitors: any[] }) {
            }
         }
         
+        const addImageProportionally = (docObj: any, b64: string, startX: number, startY: number, maxW: number, maxH: number) => {
+            try {
+                const props = docObj.getImageProperties(b64);
+                const ratio = Math.min(maxW / props.width, maxH / props.height);
+                const finalW = props.width * ratio;
+                const finalH = props.height * ratio;
+                // Center horizontally within the bounding box
+                const offsetX = startX + (maxW - finalW) / 2;
+                docObj.addImage(b64, "JPEG", offsetX, startY, finalW, finalH);
+            } catch (e) {
+                // Fallback if formatting fails
+                docObj.addImage(b64, "JPEG", startX, startY, maxW, maxH);
+            }
+        };
+
         let offsetY = fileOffsetY + 20;
-        
+
         if (frontUrl) {
            const finalFrontUrl = await convertUrlToBase64(frontUrl);
            doc.setFontSize(10);
            doc.text("Frente del Documento:", 20, offsetY);
-           doc.addImage(finalFrontUrl, "JPEG", 20, offsetY + 5, 80, 50);
+           addImageProportionally(doc, finalFrontUrl, 20, offsetY + 5, 80, 50);
         }
         if (backUrl) {
            const finalBackUrl = await convertUrlToBase64(backUrl);
            doc.setFontSize(10);
            doc.text("Reverso del Documento:", 110, offsetY);
-           doc.addImage(finalBackUrl, "JPEG", 110, offsetY + 5, 80, 50);
+           addImageProportionally(doc, finalBackUrl, 110, offsetY + 5, 80, 50);
         }
         
         if (visitor.selfieUrl) {
@@ -85,7 +100,7 @@ export default function DocumentListClient({ visitors }: { visitors: any[] }) {
            offsetY += 65;
            doc.setFontSize(10);
            doc.text("Fotografia Facial / Biometria:", 20, offsetY);
-           doc.addImage(finalSelfieUrl, "JPEG", 20, offsetY + 5, 60, 60);
+           addImageProportionally(doc, finalSelfieUrl, 20, offsetY + 5, 60, 60);
         }
         
         const fileName = `Documentos_${visitor.name.replace(/\s+/g, '_')}.pdf`;
