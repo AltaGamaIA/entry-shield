@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EntryShield | Búsqueda de Reservas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-tint": "#adc6ff",
+                        "outline": "#767575",
+                        "on-background": "#e7e5e5",
+                        "on-secondary-fixed-variant": "#5a5b63",
+                        "surface-container-lowest": "#000000",
+                        "on-primary-fixed-variant": "#0058bb",
+                        "tertiary-fixed": "#69f6b8",
+                        "surface-container-highest": "#252626",
+                        "on-primary-container": "#bcd0ff",
+                        "on-surface-variant": "#acabaa",
+                        "surface": "#0e0e0e",
+                        "on-secondary-fixed": "#3e3f47",
+                        "tertiary": "#9bffce",
+                        "secondary-container": "#3a3b43",
+                        "on-error-container": "#ff9993",
+                        "on-secondary-container": "#bfbec8",
+                        "background": "#0e0e0e",
+                        "on-tertiary-fixed": "#00452d",
+                        "on-primary-fixed": "#003d85",
+                        "secondary-fixed-dim": "#d4d3dd",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary": "#006443",
+                        "surface-bright": "#2b2c2c",
+                        "on-error": "#490106",
+                        "inverse-on-surface": "#565555",
+                        "error-dim": "#bb5551",
+                        "tertiary-fixed-dim": "#58e7ab",
+                        "surface-container-low": "#131313",
+                        "secondary-fixed": "#e3e1ec",
+                        "surface-container-high": "#1f2020",
+                        "primary-fixed-dim": "#c2d4ff",
+                        "secondary-dim": "#9d9da6",
+                        "inverse-surface": "#fcf9f8",
+                        "secondary": "#9d9da6",
+                        "outline-variant": "#484848",
+                        "error-container": "#7f2927",
+                        "inverse-primary": "#005bc2",
+                        "primary-dim": "#97b9ff",
+                        "surface-variant": "#252626",
+                        "error": "#ee7d77",
+                        "tertiary-container": "#69f6b8",
+                        "surface-dim": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#006544",
+                        "tertiary-dim": "#58e7ab",
+                        "primary-container": "#004493",
+                        "surface-container": "#191a1a",
+                        "on-surface": "#e7e5e5",
+                        "on-tertiary-container": "#005a3c",
+                        "on-secondary": "#1f2027",
+                        "primary": "#adc6ff",
+                        "on-primary": "#003d87"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e0e0e;
+            color: #e7e5e5;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(19, 19, 19, 0.6);
+            backdrop-filter: blur(12px);
+        }
+        .premium-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #004493 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-6 h-20 w-full fixed top-0 z-50 bg-[#131313]/60 backdrop-blur-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#adc6ff]" data-icon="shield">shield</span>
+<span class="text-xl font-extrabold text-[#e7e5e5] tracking-tighter font-['Manrope']">EntryShield</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6 font-['Manrope'] font-bold tracking-[-0.02em]">
+<a class="text-[#e7e5e5]/60 hover:bg-[#1f2020] transition-all duration-300 px-3 py-1 rounded-lg" href="#">Panel</a>
+<a class="text-[#adc6ff] transition-all duration-300 px-3 py-1 rounded-lg" href="#">Buscar</a>
+<a class="text-[#e7e5e5]/60 hover:bg-[#1f2020] transition-all duration-300 px-3 py-1 rounded-lg" href="#">Visitantes</a>
+<a class="text-[#e7e5e5]/60 hover:bg-[#1f2020] transition-all duration-300 px-3 py-1 rounded-lg" href="#">Incidentes</a>
+</nav>
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional male security staff member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGloLRFI2BZlc7IFzdrIaWk-5ll1pZP3bUD7NP_S5FFd0gvJ5SHC_L3panPxT5OUS30eQge3dVMWOvUJWGXDBeONWoXvgiZ0yKa3r_M5-9cVVtAXZuAqfKefmpLRmRGPNCWwWUIU2QgyfMK_YzSDLiHDm-joDMpySNRTHoLGhTFLaYoyCgjCpPMDOxsGJSbvRN3KqO6G442fNV3oerFXrU48jUybRi1CSC6pI9ibaaBt9LzjuTPwjMziMJIx00WE2pYVPf07KI9oNd"/>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<span class="material-symbols-outlined text-[#e7e5e5]">menu</span>
+</div>
+</header>
+<main class="pt-24 px-4 md:px-8 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Search Section -->
+<section class="lg:col-span-4 space-y-6">
+<div class="bg-surface-container-high rounded-xl p-6 shadow-2xl">
+<h1 class="font-headline font-bold text-2xl mb-6 tracking-tight">Búsqueda de Reservas</h1>
+<div class="space-y-4">
+<div class="group relative">
+<label class="block text-xs font-label text-on-surface-variant uppercase tracking-widest mb-1.5 ml-1">Nombre del Huésped</label>
+<div class="flex items-center bg-surface-container-lowest border border-outline-variant/20 rounded-lg px-4 py-3 focus-within:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mr-3 text-sm" data-icon="person">person</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface w-full font-body text-sm placeholder:text-on-surface-variant/40" placeholder="ej. Julianne Moore" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="group relative">
+<label class="block text-xs font-label text-on-surface-variant uppercase tracking-widest mb-1.5 ml-1">Unidad / Villa</label>
+<div class="flex items-center bg-surface-container-lowest border border-outline-variant/20 rounded-lg px-4 py-3 focus-within:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mr-3 text-sm" data-icon="apartment">apartment</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface w-full font-body text-sm placeholder:text-on-surface-variant/40" placeholder="V-402" type="text"/>
+</div>
+</div>
+<div class="group relative">
+<label class="block text-xs font-label text-on-surface-variant uppercase tracking-widest mb-1.5 ml-1">Código</label>
+<div class="flex items-center bg-surface-container-lowest border border-outline-variant/20 rounded-lg px-4 py-3 focus-within:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mr-3 text-sm" data-icon="qr_code">qr_code</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface w-full font-body text-sm placeholder:text-on-surface-variant/40" placeholder="RES-9912" type="text"/>
+</div>
+</div>
+</div>
+<button class="w-full premium-gradient text-on-primary font-headline font-bold py-4 rounded-xl shadow-lg shadow-primary/10 active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+                        Ejecutar Búsqueda
+                    </button>
+</div>
+</div>
+<!-- Search Results List -->
+<div class="space-y-3">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-xs font-label text-on-surface-variant uppercase tracking-widest">Actividad Reciente</h3>
+<span class="text-xs text-primary font-medium">3 Resultados</span>
+</div>
+<!-- Result Item 1 -->
+<div class="bg-surface-container-low hover:bg-surface-bright transition-colors p-4 rounded-xl flex items-center gap-4 cursor-pointer group border border-transparent hover:border-outline-variant/10">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Modern high-resolution headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIg0NwxaHBVxFUBjF7656Y4lEm7JrGcTmCic-VpF9B69VQ3TLyqFa_ktVFXp6N5wdfhdMB_FZBAIq7JYLIzMLFpGY_cmvqj2YfzNRbntWIke9bDWOeqvmPFJI6x2TzC-J6IO2Ur8T6r9K70-VMQR3VCzvjBMU3wzkRVJkMbWTmlexJNwpx4aeh9pZM2zc6hZ_R8nBM9N4uKiFUExdEYohGFZaKMnBLwT-qTmu815BEGfU8ZRLaqxb5g8K6L7L97dHz6186XbP9qC35"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h4 class="font-headline font-bold text-on-surface truncate">Julianne Moore</h4>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-tertiary-container text-on-tertiary-container uppercase">Llegó</span>
+</div>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="calendar_month">calendar_month</span>
+                            Oct 12 — Oct 18
+                        </p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Result Item 2 (Active/Selected) -->
+<div class="bg-surface-container-high ring-1 ring-primary/30 p-4 rounded-xl flex items-center gap-4 cursor-pointer border border-primary/20">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait of Marcus Sterling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB5QdjMaYGh_2JE_2CF45qNet_lveO68osCXmh-XrW66M1HkYNArqRzBNmXBbf96E76SQXZh159UoDcmOhQoE6vHAT3ESOH3tmFtEARJ3ymYSyCcpAm-_J8jCtPaPQ3VvCMhrX7RSyaLck00ytXGvwreSb29-0jgJCbqPe5-E70nhIyD6CXOq05uJ9Bm7HKLg8x4kragUyjVQ_QjHwObLmC0ao4iO7MLkXTxajNOqEqTNFNQSWTLxuv_yUTYYuwfqERNS1NUy5dnv5"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h4 class="font-headline font-bold text-on-surface truncate">Marcus Sterling</h4>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container text-secondary uppercase">Esperado</span>
+</div>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="calendar_month">calendar_month</span>
+                            Oct 14 — Oct 20
+                        </p>
+</div>
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(173,198,255,0.6)]"></div>
+</div>
+<!-- Result Item 3 -->
+<div class="bg-surface-container-low hover:bg-surface-bright transition-colors p-4 rounded-xl flex items-center gap-4 cursor-pointer group border border-transparent hover:border-outline-variant/10">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait of Elena Rodriguez" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7EIJvXc7Tys5cqPh4wJDT2sY8Ez7lxIcp9GB9r2iGmpy2C9AFyj1MGryBSy8bDe98nBvDcDtVgQQL0xrh7I9mZ45ZQ7aboq6FfDvxNi2k4VTthkPsVCeuWPMCijQ08ROZqoe8n3eSmrb7Qo1-j5tItFqZ2hWzfrMk2r7vgOWouNdcPWvP4_2j4U62r7i__G9ZudDtHl_sj9CviNMi6eI1A40ry7bi9UlWBICAserz5T05dtrmFH3OqIOWTBnkH5xXP7-f8QWGGu-A"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h4 class="font-headline font-bold text-on-surface truncate">Elena Rodriguez</h4>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container text-secondary uppercase">Esperado</span>
+</div>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="calendar_month">calendar_month</span>
+                            Oct 15 — Oct 22
+                        </p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Reservation Details Section -->
+<section class="lg:col-span-8 space-y-8">
+<div class="bg-surface rounded-3xl overflow-hidden shadow-2xl border border-outline-variant/10 relative">
+<!-- Header Hero -->
+<div class="h-48 relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-60" data-alt="High-end luxury modern villa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_oPHiPhrQaj-12HNbNor3jMgs-XQFfr02LE5mwKwLG5u9sYKHneys7gQOD9G4pH8GpmYG51tei6ss7GK7HTPAN1c7qlWa_9fWZJYzA7DberdSAoQpeX_2cKmgU-oUwWmcz0Y7tzOKhAz39rYUnfEPGvhCg-fSYwBHIkYZJW6leVgwe3azuiBrTcyWszihcWeB5F0w_okkVd6wdeSZBaSouCZw7fmV-A8LekUsK-DAitW5UJo5WD4zX8e9ECTKCHIriyE_JU9ZL8JH"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="absolute bottom-6 left-8 flex items-end gap-6">
+<div class="w-24 h-24 rounded-2xl border-4 border-surface shadow-2xl overflow-hidden bg-surface">
+<img class="w-full h-full object-cover" data-alt="Portrait of Marcus Sterling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNfskjMBSvOMW6DY37vAQbJI6wIXBK9me9wuqLlgyYFmpwkcH4kCprLELTjqfpyk2fDGTDy04ug8R0VMU-4woYaNUi2F3JFw07DNFlvW8CDcsq6YLyG99AHuG9snC1n9fQIxTIhNQWpp0toIONd8CXcgmP98v0KDkj8uGCokW2LShzGms7D7yRnA-l95WJdP4ivsW8TFWa6xELPVTwpxmCGm4DCr61rwbpFSBZk2CtAq-ya27REPV2-tQsFeg5kqI4pgd0Vvqw1odH"/>
+</div>
+<div class="mb-2">
+<div class="flex items-center gap-3 mb-1">
+<h2 class="font-headline font-extrabold text-3xl tracking-tight text-on-surface">Marcus Sterling</h2>
+<span class="bg-tertiary/20 text-tertiary-fixed text-[10px] font-black uppercase px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span> Verificado
+                                </span>
+</div>
+<p class="text-on-surface-variant font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                                Villa 22, Ocean View Drive
+                            </p>
+</div>
+</div>
+</div>
+<!-- Bento Info Grid -->
+<div class="p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Left: Core Info -->
+<div class="md:col-span-2 space-y-6">
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-5 rounded-2xl">
+<span class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest block mb-2">Periodo de Reserva</span>
+<div class="flex flex-col gap-1">
+<span class="text-sm font-bold text-on-surface">14 Oct, 2023 — 20 Oct, 2023</span>
+<span class="text-xs text-on-surface-variant">6 Noches Restantes</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-2xl">
+<span class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest block mb-2">Ocupación</span>
+<div class="flex items-center gap-3">
+<span class="text-2xl font-black text-primary">04</span>
+<span class="text-xs text-on-surface-variant leading-tight">Total Huéspedes<br/>Aprobados</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="policy">policy</span>
+</div>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="gavel">gavel</span>
+<h3 class="font-headline font-bold text-lg">Política de Visitantes</h3>
+</div>
+<div class="bg-error-container/20 border border-error-container/30 p-4 rounded-xl mb-4">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-error" data-icon="block">block</span>
+<div>
+<p class="text-sm font-bold text-on-error-container">No se Permiten Visitantes Externos</p>
+<p class="text-xs text-on-error-container/80 mt-1">Esta propiedad tiene una política estricta de invitados no registrados según las reglas de la urbanización.</p>
+</div>
+</div>
+</div>
+<ul class="space-y-2">
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant"></div>
+                                    Acceso a personal de servicio de 8 AM - 5 PM
+                                </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant">
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant"></div>
+                                    Entregas deben dejarse en la caseta de vigilancia
+                                </li>
+</ul>
+</div>
+</div>
+<!-- Right: Quick Actions & Alerts -->
+<div class="space-y-6">
+<div class="bg-surface-container-low p-6 rounded-2xl border border-primary/10">
+<h3 class="text-xs font-label text-on-surface-variant uppercase tracking-widest mb-4">Acciones Rápidas</h3>
+<div class="space-y-3">
+<button class="w-full bg-surface-container-high hover:bg-surface-bright text-primary text-sm font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="person_add">person_add</span>
+                                    Registrar Visitante
+                                </button>
+<button class="w-full bg-surface-container-high hover:bg-surface-bright text-on-surface text-sm font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="edit_note">edit_note</span>
+                                    Añadir Entrada al Log
+                                </button>
+<button class="w-full bg-surface-container-high hover:bg-surface-bright text-error text-sm font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="warning">warning</span>
+                                    Reportar Problema
+                                </button>
+</div>
+</div>
+<div class="bg-secondary-container/10 p-5 rounded-2xl">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-secondary" data-icon="notification_important">notification_important</span>
+<h3 class="text-xs font-label text-secondary uppercase tracking-widest">Alertas de Reglas</h3>
+</div>
+<div class="space-y-3">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant mt-0.5" data-icon="volume_off">volume_off</span>
+<p class="text-xs text-on-surface-variant"><strong class="text-on-surface">Horario de Silencio:</strong> Control estricto después de 10 PM. Multa inmediata por infracciones.</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant mt-0.5" data-icon="directions_car">directions_car</span>
+<p class="text-xs text-on-surface-variant"><strong class="text-on-surface">Estacionamiento:</strong> Máx 2 vehículos. Prohibido aparcar en la calle de noche.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Log -->
+<div class="bg-surface-container-lowest p-6 border-t border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-xs font-label text-on-surface-variant uppercase tracking-widest">Registros de Acceso</h4>
+<a class="text-xs text-primary font-bold" href="#">Ver Historial</a>
+</div>
+<div class="flex items-center justify-between py-2 text-xs">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+</div>
+<span class="text-on-surface font-medium">Documento de Identidad Escaneado</span>
+</div>
+<span class="text-on-surface-variant">hace 2 horas</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-[#131313]/80 backdrop-blur-xl flex justify-around items-center px-4 pb-6 pt-2 border-t border-[#e7e5e5]/10 rounded-t-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Panel</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#1f2020] text-[#adc6ff] rounded-xl px-4 py-2">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Buscar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Visitantes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Incidentes</span>
+</div>
+</nav>
+<!-- Quick FAB (Contextual) -->
+<button class="fixed bottom-28 right-6 md:bottom-8 md:right-8 premium-gradient w-14 h-14 rounded-full shadow-2xl flex items-center justify-center active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined text-on-primary text-3xl" data-icon="add" style="font-variation-settings: 'FILL' 0, 'wght' 600;">add</span>
+</button>
+</body></html>

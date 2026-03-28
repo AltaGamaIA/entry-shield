@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EntryShield | Acceso Seguro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#adc6ff",
+              "outline": "#767575",
+              "on-background": "#e7e5e5",
+              "on-secondary-fixed-variant": "#5a5b63",
+              "surface-container-lowest": "#000000",
+              "on-primary-fixed-variant": "#0058bb",
+              "tertiary-fixed": "#69f6b8",
+              "surface-container-highest": "#252626",
+              "on-primary-container": "#bcd0ff",
+              "on-surface-variant": "#acabaa",
+              "surface": "#0e0e0e",
+              "on-secondary-fixed": "#3e3f47",
+              "tertiary": "#9bffce",
+              "secondary-container": "#3a3b43",
+              "on-error-container": "#ff9993",
+              "on-secondary-container": "#bfbec8",
+              "background": "#0e0e0e",
+              "on-tertiary-fixed": "#00452d",
+              "on-primary-fixed": "#003d85",
+              "secondary-fixed-dim": "#d4d3dd",
+              "primary-fixed": "#d8e2ff",
+              "on-tertiary": "#006443",
+              "surface-bright": "#2b2c2c",
+              "on-error": "#490106",
+              "inverse-on-surface": "#565555",
+              "error-dim": "#bb5551",
+              "tertiary-fixed-dim": "#58e7ab",
+              "surface-container-low": "#131313",
+              "secondary-fixed": "#e3e1ec",
+              "surface-container-high": "#1f2020",
+              "primary-fixed-dim": "#c2d4ff",
+              "secondary-dim": "#9d9da6",
+              "inverse-surface": "#fcf9f8",
+              "secondary": "#9d9da6",
+              "outline-variant": "#484848",
+              "error-container": "#7f2927",
+              "inverse-primary": "#005bc2",
+              "primary-dim": "#97b9ff",
+              "surface-variant": "#252626",
+              "error": "#ee7d77",
+              "tertiary-container": "#69f6b8",
+              "surface-dim": "#0e0e0e",
+              "on-tertiary-fixed-variant": "#006544",
+              "tertiary-dim": "#58e7ab",
+              "primary-container": "#004493",
+              "surface-container": "#191a1a",
+              "on-surface": "#e7e5e5",
+              "on-tertiary-container": "#005a3c",
+              "on-secondary": "#1f2027",
+              "primary": "#adc6ff",
+              "on-primary": "#003d87"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, .brand-font { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(19, 19, 19, 0.7);
+            backdrop-filter: blur(24px);
+        }
+        .security-pulse {
+            position: relative;
+        }
+        .security-pulse::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #69f6b8;
+            border-radius: 50%;
+            top: -2px;
+            right: -2px;
+            box-shadow: 0 0 8px #69f6b8;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary selection:text-on-primary min-h-screen flex items-center justify-center overflow-hidden">
+<!-- Background Cinematic Element -->
+<div class="fixed inset-0 z-0">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,68,147,0.15),transparent_70%)]"></div>
+<div class="absolute inset-0 opacity-40 mix-blend-overlay" data-alt="abstract high-tech server room background with glowing blue lights and depth of field blur in a dark environment" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCsOELDd4H4xZ7GsFl4J8_AOaOu-w91NHVaGGsqGb6SqGMR53XSN_smGZnr253Xubwi54eKA0XTGSlZna7J9vMp3F-E-wkbaYNvNhYdYB2iWR__570lq14gMDrf69mLddSalq6Xe60h6sDpxxE0k7sZ7wiDwgkB-lmdyjDGbmu6yIbAOZyYZAE8O1_15P0DPJ5drgAR6b9HQAHtEeYOkQK9Qhg0GQZShNbB7-Xz37y486Empua7IPQsO_msQwLIPNYquhDcqPus8V5R'); background-size: cover; background-position: center;"></div>
+</div>
+<main class="relative z-10 w-full max-w-[1200px] flex flex-col md:flex-row items-center justify-center p-6 md:p-12 gap-12 lg:gap-24">
+<!-- Branding & Value Prop (Asymmetric Layout) -->
+<div class="w-full md:w-1/2 flex flex-col items-start space-y-8">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary-container flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-on-primary text-2xl" data-icon="shield">shield</span>
+</div>
+<span class="text-3xl font-extrabold tracking-tighter text-on-surface brand-font">EntryShield</span>
+</div>
+<div class="space-y-4">
+<h1 class="text-5xl md:text-6xl font-extrabold tracking-[-0.03em] leading-tight text-on-surface">
+                    Seguridad <span class="text-primary">Evolucionada</span>.
+                </h1>
+<p class="text-on-surface-variant text-lg max-w-md leading-relaxed">
+                    Acceda a la próxima generación de protección de propiedades. Monitoreo integrado y cumplimiento para personal autorizado.
+                </p>
+</div>
+<!-- Trust Indicator -->
+<div class="flex items-center gap-4 pt-4">
+<div class="security-pulse">
+<span class="material-symbols-outlined text-tertiary-fixed text-3xl" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface uppercase tracking-widest">Estado del Sistema</p>
+<p class="text-xs text-tertiary-fixed-dim font-medium">Encriptado y Operativo</p>
+</div>
+</div>
+</div>
+<!-- Login Card -->
+<div class="w-full md:w-[480px]">
+<div class="glass-panel border border-outline-variant/20 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
+<!-- Top Decorative Accent -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+<header class="mb-8">
+<h2 class="text-2xl font-bold text-on-surface mb-2">Acceso al Portal de Personal</h2>
+<p class="text-on-surface-variant text-sm">Por favor, identifíquese para continuar.</p>
+</header>
+<form class="space-y-6">
+<!-- Role Selection -->
+<div class="space-y-2">
+<label class="text-[11px] font-bold text-on-surface/60 uppercase tracking-widest ml-1">Rol del Personal</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center gap-2 p-3 rounded-xl bg-surface-container-high border border-outline-variant/30 text-on-surface-variant hover:bg-surface-bright hover:text-primary transition-all duration-300" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="security">security</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Seguridad</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-xl bg-surface-container-high border border-primary/50 text-primary transition-all duration-300 ring-1 ring-primary/20" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="badge">badge</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Gerente</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-xl bg-surface-container-high border border-outline-variant/30 text-on-surface-variant hover:bg-surface-bright hover:text-primary transition-all duration-300" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Administrador</span>
+</button>
+</div>
+</div>
+<!-- Input Fields -->
+<div class="space-y-4">
+<div class="space-y-1">
+<label class="text-[11px] font-bold text-on-surface/60 uppercase tracking-widest ml-1" for="staff-id">ID de Personal</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl" data-icon="fingerprint">fingerprint</span>
+<input class="w-full h-14 bg-surface-container-lowest border border-outline-variant/30 rounded-xl pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/40 focus:border-primary focus:ring-1 focus:ring-primary transition-all outline-none" id="staff-id" placeholder="ES-000-000" type="text"/>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between items-end mb-1">
+<label class="text-[11px] font-bold text-on-surface/60 uppercase tracking-widest ml-1" for="password">Contraseña</label>
+<a class="text-[10px] font-semibold text-primary/70 hover:text-primary uppercase tracking-wider transition-colors" href="#">Recuperar Clave</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl" data-icon="lock">lock</span>
+<input class="w-full h-14 bg-surface-container-lowest border border-outline-variant/30 rounded-xl pl-12 pr-12 text-on-surface placeholder:text-on-surface-variant/40 focus:border-primary focus:ring-1 focus:ring-primary transition-all outline-none" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full h-14 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3">
+<span>Autorizar Acceso</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<!-- Disclaimer -->
+<footer class="mt-8 pt-6 border-t border-outline-variant/10">
+<div class="flex items-start gap-3 bg-error-container/10 p-4 rounded-xl">
+<span class="material-symbols-outlined text-error-dim mt-0.5" data-icon="warning">warning</span>
+<p class="text-[10px] leading-relaxed text-on-surface-variant uppercase tracking-tighter">
+<span class="text-error-dim font-bold">Solo Personal Autorizado.</span> Los intentos de acceso no autorizados son monitoreados, registrados y sujetos a acciones legales bajo los protocolos Alpha-9.
+                        </p>
+</div>
+</footer>
+</div>
+<!-- Secondary Actions -->
+<div class="mt-6 flex justify-between items-center px-2">
+<p class="text-[11px] text-on-surface-variant font-medium">EntryShield v2.4.0-Stable</p>
+<div class="flex gap-4">
+<a class="text-[11px] text-on-surface-variant hover:text-primary transition-colors" href="#">Privacidad</a>
+<a class="text-[11px] text-on-surface-variant hover:text-primary transition-colors" href="#">Términos</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Security Banner -->
+<div class="fixed bottom-0 left-0 w-full h-12 glass-panel border-t border-outline-variant/10 flex items-center justify-center z-20 overflow-hidden px-6">
+<div class="flex items-center gap-8 whitespace-nowrap animate-marquee">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Zona A: Asegurada</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Perímetro: Activo</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">AES-256 Habilitado</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Bio-Sync: Listo</span>
+</div>
+</div>
+</div>
+</body></html>

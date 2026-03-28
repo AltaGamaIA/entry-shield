@@ -1,0 +1,84 @@
+// PostgreSQL Ready Schema for Production Deployment (ej. Vercel + Neon / Supabase)
+// Replace your schema.prisma with this file when running `npx prisma migrate deploy` in the cloud.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  // Para Auth usando "ID de Personal" (Ej: ES-123-456)
+  staffId       String    @unique 
+  password      String    
+  role          String    @default("GUARD") // "GUARD", "CONCIERGE", "MANAGER", "ADMIN"
+  
+  propertyAccess Property[]
+}
+
+model Property {
+  id          String   @id @default(cuid())
+  name        String
+  address     String
+  config      String?  // JSON stringified (rules, thresholds)
+  
+  users       User[]
+  reservations Reservation[]
+}
+
+model Reservation {
+  id            String    @id @default(cuid())
+  propertyId    String
+  property      Property  @relation(fields: [propertyId], references: [id])
+  guestName     String
+  checkIn       DateTime
+  checkOut      DateTime
+  visitorPolicy String?
+  
+  visitors      Visitor[]
+}
+
+model Visitor {
+  id            String    @id @default(cuid())
+  reservationId String
+  reservation   Reservation @relation(fields: [reservationId], references: [id])
+  
+  name           String
+  documentId     String
+  documentType   String    @default("CC") // "CC", "CE", "PASSPORT", "PPT"
+  approximateAge String?
+  selfieUrl      String?
+  idCardUrl      String?
+  status         String    @default("PENDING") // "PENDING", "APPROVED", "DENIED", "FLAGGED"
+  
+  visits        Visit[]
+}
+
+model Visit {
+  id            String    @id @default(cuid())
+  visitorId     String
+  visitor       Visitor   @relation(fields: [visitorId], references: [id])
+  
+  checkInTime   DateTime  @default(now())
+  checkOutTime  DateTime?
+  staffId       String    // The User who registered them
+
+  incidents     Incident[]
+}
+
+model Incident {
+  id            String    @id @default(cuid())
+  visitId       String?
+  visit         Visit?    @relation(fields: [visitId], references: [id])
+  
+  description   String
+  evidenceUrls  String    // JSON String array
+  severity      String    @default("LOW") // "LOW", "MEDIUM", "HIGH", "CRITICAL"
+  createdAt     DateTime  @default(now())
+}

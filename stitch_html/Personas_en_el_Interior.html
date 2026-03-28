@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EntryShield | Panel de Visitantes en Vivo</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#adc6ff",
+              "outline": "#767575",
+              "on-background": "#e7e5e5",
+              "on-secondary-fixed-variant": "#5a5b63",
+              "surface-container-lowest": "#000000",
+              "on-primary-fixed-variant": "#0058bb",
+              "tertiary-fixed": "#69f6b8",
+              "surface-container-highest": "#252626",
+              "on-primary-container": "#bcd0ff",
+              "on-surface-variant": "#acabaa",
+              "surface": "#0e0e0e",
+              "on-secondary-fixed": "#3e3f47",
+              "tertiary": "#9bffce",
+              "secondary-container": "#3a3b43",
+              "on-error-container": "#ff9993",
+              "on-secondary-container": "#bfbec8",
+              "background": "#0e0e0e",
+              "on-tertiary-fixed": "#00452d",
+              "on-primary-fixed": "#003d85",
+              "secondary-fixed-dim": "#d4d3dd",
+              "primary-fixed": "#d8e2ff",
+              "on-tertiary": "#006443",
+              "surface-bright": "#2b2c2c",
+              "on-error": "#490106",
+              "inverse-on-surface": "#565555",
+              "error-dim": "#bb5551",
+              "tertiary-fixed-dim": "#58e7ab",
+              "surface-container-low": "#131313",
+              "secondary-fixed": "#e3e1ec",
+              "surface-container-high": "#1f2020",
+              "primary-fixed-dim": "#c2d4ff",
+              "secondary-dim": "#9d9da6",
+              "inverse-surface": "#fcf9f8",
+              "secondary": "#9d9da6",
+              "outline-variant": "#484848",
+              "error-container": "#7f2927",
+              "inverse-primary": "#005bc2",
+              "primary-dim": "#97b9ff",
+              "surface-variant": "#252626",
+              "error": "#ee7d77",
+              "tertiary-container": "#69f6b8",
+              "surface-dim": "#0e0e0e",
+              "on-tertiary-fixed-variant": "#006544",
+              "tertiary-dim": "#58e7ab",
+              "primary-container": "#004493",
+              "surface-container": "#191a1a",
+              "on-surface": "#e7e5e5",
+              "on-tertiary-container": "#005a3c",
+              "on-secondary": "#1f2027",
+              "primary": "#adc6ff",
+              "on-primary": "#003d87"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulse-dot {
+            box-shadow: 0 0 0 0 rgba(105, 246, 184, 0.7);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(105, 246, 184, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(105, 246, 184, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(105, 246, 184, 0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-6 h-20 w-full fixed top-0 z-50 bg-[#131313]/60 backdrop-blur-lg bg-gradient-to-b from-[#131313] to-transparent shadow-none">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#adc6ff] text-2xl" data-icon="shield">shield</span>
+<h1 class="text-xl font-extrabold text-[#e7e5e5] tracking-tighter font-['Manrope']">EntryShield</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex items-center gap-6">
+<a class="text-[#e7e5e5]/60 hover:text-[#e7e5e5] transition-all duration-300 font-['Manrope'] font-bold tracking-[-0.02em]" href="#">Resumen</a>
+<a class="text-[#adc6ff] font-['Manrope'] font-bold tracking-[-0.02em]" href="#">Visitantes</a>
+<a class="text-[#e7e5e5]/60 hover:text-[#e7e5e5] transition-all duration-300 font-['Manrope'] font-bold tracking-[-0.02em]" href="#">Incidentes</a>
+<a class="text-[#e7e5e5]/60 hover:text-[#e7e5e5] transition-all duration-300 font-['Manrope'] font-bold tracking-[-0.02em]" href="#">Ajustes</a>
+</nav>
+<div class="h-8 w-[1px] bg-outline-variant/30"></div>
+<div class="flex items-center gap-3 group cursor-pointer hover:bg-[#1f2020] p-2 rounded-xl transition-all duration-300 active:scale-98">
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">Miembro del Personal</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Control Maestro</p>
+</div>
+<img alt="User Profile" class="w-10 h-10 rounded-full border border-primary/20 object-cover" data-alt="Professional headshot of a security supervisor in a dark uniform, neutral studio background, high-end corporate photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU8SK6RByhvzyJCzF0ilmwVm_jPjS9YGIzPUOIsHrG-A4xRB4wclQU823cuBXZkqmmtE8-ASm_KGEEIOCwxeyseQb2fJAL-Cw0HYLS_iEZuI3wBysdP00Gwh2KOimhll82YvrzQ_pDOE9lbempBcN43FczvBA_WcawRzBsVfAu2saTJ5dHhE-P_Ht5X9ZxY_xJCuKLWQwkDlJLAlqUAk5Hd1MQHwSy8cnOlvaZa1IyvRae9Mx7vrgTQB-HreA1rblt8YCo99v45cKl"/>
+</div>
+</div>
+<button class="md:hidden text-[#e7e5e5]">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<main class="pt-28 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Header Section & Stats -->
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div class="space-y-2">
+<div class="flex items-center gap-3 mb-1">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary pulse-dot"></span>
+<span class="text-tertiary font-label text-sm font-semibold tracking-wider uppercase">Estado del Sistema en Vivo</span>
+</div>
+<h2 class="text-5xl font-headline font-extrabold tracking-tight text-on-surface leading-none">
+                    En el Interior
+                </h2>
+<p class="text-on-surface-variant max-w-md font-medium">
+                    Monitoreo en tiempo real de credenciales activas y acceso de invitados dentro del perímetro.
+                </p>
+</div>
+<div class="bg-surface-container-high p-6 rounded-2xl flex items-center gap-6 min-w-[240px]">
+<div class="bg-primary-container/20 p-4 rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="group">group</span>
+</div>
+<div>
+<p class="text-4xl font-headline font-black text-on-surface leading-tight">28</p>
+<p class="text-xs text-on-surface-variant font-bold uppercase tracking-widest">Personas Adentro</p>
+</div>
+</div>
+</div>
+<!-- Filters Section -->
+<div class="flex flex-wrap items-center gap-4 mb-8">
+<div class="flex items-center bg-surface-container-low px-4 py-2.5 rounded-xl border border-outline-variant/10 focus-within:border-primary/40 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-xl mr-3" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 p-0 text-sm text-on-surface placeholder:text-on-surface-variant/50 w-48" placeholder="Buscar visitantes..." type="text"/>
+</div>
+<button class="flex items-center bg-surface-container-low px-5 py-2.5 rounded-xl text-sm font-semibold text-on-surface hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined text-lg mr-2" data-icon="apartment">apartment</span>
+                Todas las Propiedades
+                <span class="material-symbols-outlined text-lg ml-2" data-icon="expand_more">expand_more</span>
+</button>
+<button class="flex items-center bg-surface-container-low px-5 py-2.5 rounded-xl text-sm font-semibold text-on-surface hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined text-lg mr-2" data-icon="filter_list">filter_list</span>
+                Motivo de Visita
+                <span class="material-symbols-outlined text-lg ml-2" data-icon="expand_more">expand_more</span>
+</button>
+<div class="ml-auto flex items-center gap-2 bg-surface-container-low p-1 rounded-lg">
+<button class="bg-surface-container-high text-primary px-3 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider">Cuadrícula</button>
+<button class="text-on-surface-variant px-3 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider hover:text-on-surface transition-colors">Lista</button>
+</div>
+</div>
+<!-- Visitor Grid (Asymmetric Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Visitor Card 1: Overstay Alert -->
+<div class="bg-surface-container-high rounded-xl p-6 relative overflow-hidden group hover:bg-surface-bright transition-all duration-300 border-l-4 border-secondary-container">
+<div class="absolute top-4 right-4 bg-secondary-container text-secondary text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md">
+                    Alerta de Tiempo Excedido
+                </div>
+<div class="flex items-start gap-5 mb-6">
+<img alt="Visitor" class="w-16 h-16 rounded-xl object-cover ring-2 ring-secondary-container/50" data-alt="Candid portrait of a young man with curly hair wearing a denim jacket, standing in a brightly lit hallway, high quality urban photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1E4I29X2qQR0-ercojQU9Tzb4vyFHpK_7S9bTbXHQkWIt-qXqClv-8N8rxLDT4QZ622VPCU2mY_bJHOm3LJ9nPDGpJzRdPYTfsX4rteeD9h_OUjnIzUeYzNqKiBpCF6SUY3YMag9PaCB6pnnWss5eMmZVYLGNx-EJN5ip20KcGQpkkgAFA7LlhA9plG_9lbqvcCd77ltteljWLlrXYZA5L9YhUeRFprMJbWhyoVoUwQAJbhwh6zRP7cJ5kFrfClQRepsPXgNOt-Hq"/>
+<div>
+<h3 class="text-lg font-headline font-bold text-on-surface">Julian Thorne</h3>
+<p class="text-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs" data-icon="door_front">door_front</span>
+                            Unidad 402 • Penthouse A
+                        </p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter mb-1">Llegada</p>
+<p class="text-sm font-semibold text-on-surface">11:15 AM</p>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<p class="text-[10px] text-secondary font-bold uppercase tracking-tighter mb-1">Duración</p>
+<p class="text-sm font-semibold text-secondary">4h 42m</p>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-3 rounded-xl font-bold text-sm tracking-tight flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                    Registrar Salida
+                    <span class="material-symbols-outlined text-base" data-icon="logout">logout</span>
+</button>
+</div>
+<!-- Visitor Card 2: Regular -->
+<div class="bg-surface-container-high rounded-xl p-6 relative overflow-hidden group hover:bg-surface-bright transition-all duration-300">
+<div class="absolute top-4 right-4 bg-tertiary-container/10 text-tertiary-fixed-dim text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md">
+                    Mantenimiento
+                </div>
+<div class="flex items-start gap-5 mb-6">
+<img alt="Visitor" class="w-16 h-16 rounded-xl object-cover border border-outline-variant/20" data-alt="Portrait of a middle-aged woman in a professional work vest, warm interior lighting, detailed texture, shallow depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyT_BqmUEhVvWyAFPHqx_fFj7ZTAzW_LS0sfQeSXoHq6pawQfUSbrWoc20CPy4Yu7VTnBpHCAvgDtmMfEym1FpDe6sJwRgiKjBUPS5Ewzr6Ym1D1Lc4az3nWWSJM-UY9c-HP58GozaPGUenrHNf_2LKeQq1qJtmnH4Ynz0wIrUm-RGw9XBj5cUYuAzQtHA0l61yBsknlenOg4_U-3i-No-H7iaQaY4CcDdHywPB7FOZuSgt_ebLdd7QyjhlE8G_NYe_THVoGGBuHIn"/>
+<div>
+<h3 class="text-lg font-headline font-bold text-on-surface">Elena Rodriguez</h3>
+<p class="text-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs" data-icon="engineering">engineering</span>
+                            Unidad 115 • Ala Norte
+                        </p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter mb-1">Llegada</p>
+<p class="text-sm font-semibold text-on-surface">02:30 PM</p>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter mb-1">Duración</p>
+<p class="text-sm font-semibold text-on-surface">1h 15m</p>
+</div>
+</div>
+<button class="w-full bg-surface-variant text-on-surface py-3 rounded-xl font-bold text-sm tracking-tight flex items-center justify-center gap-2 hover:bg-surface-bright active:scale-95 transition-all">
+                    Registrar Salida
+                    <span class="material-symbols-outlined text-base" data-icon="logout">logout</span>
+</button>
+</div>
+<!-- Visitor Card 3: Overstay Alert -->
+<div class="bg-surface-container-high rounded-xl p-6 relative overflow-hidden group hover:bg-surface-bright transition-all duration-300 border-l-4 border-secondary-container">
+<div class="absolute top-4 right-4 bg-secondary-container text-secondary text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md">
+                    Alerta de Tiempo Excedido
+                </div>
+<div class="flex items-start gap-5 mb-6">
+<img alt="Visitor" class="w-16 h-16 rounded-xl object-cover ring-2 ring-secondary-container/50" data-alt="Close-up of a man with glasses wearing a dark turtleneck, professional and sophisticated look, moody cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh3ULk3jgnKOdajtMZMVbtBByjhvwouJB9zvJty0aY4Vgn1hedhNhSOHH37tMIc4dovmcKvz8NJrHADIqSm523FQtrEzcDwTKZ4ykotq3BLUCsDpQUyrIMON7cJgXyXIveJj5-eNuj2VX22qpaKswwGpJbI1AEFck_qQgMg3VJw4mweAq3DAt3TB5anBT2WB5RnDA5U5GorLReGHo7jhPux9R64LIM09EoSh6JMs99zWnpo3OPcKhtDvcgA4rNnlGcmhYXuFTHKJe4"/>
+<div>
+<h3 class="text-lg font-headline font-bold text-on-surface">Marcus Chen</h3>
+<p class="text-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs" data-icon="person">person</span>
+                            Unidad 308 • Torre Sur
+                        </p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter mb-1">Llegada</p>
+<p class="text-sm font-semibold text-on-surface">09:45 AM</p>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<p class="text-[10px] text-secondary font-bold uppercase tracking-tighter mb-1">Duración</p>
+<p class="text-sm font-semibold text-secondary">6h 12m</p>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-3 rounded-xl font-bold text-sm tracking-tight flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                    Registrar Salida
+                    <span class="material-symbols-outlined text-base" data-icon="logout">logout</span>
+</button>
+</div>
+<!-- Visitor Card 4: Regular -->
+<div class="bg-surface-container-high rounded-xl p-6 relative overflow-hidden group hover:bg-surface-bright transition-all duration-300">
+<div class="absolute top-4 right-4 bg-primary-container/20 text-primary text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md">
+                    Visita Social
+                </div>
+<div class="flex items-start gap-5 mb-6">
+<img alt="Visitor" class="w-16 h-16 rounded-xl object-cover border border-outline-variant/20" data-alt="Portrait of a young woman smiling at the camera, natural sunlight, soft shadows, vibrant and friendly atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf8n2LvKvOKPvzN21-FoJQX7nAhPerldLclDiRkpejANLQSq77B4iik7pwn6L50GmqM9Z2tLC52l1opLpxlpjMA6NYqkcBvYvnrIy3FPDFQ1mkpQ1RNnZTyAAa4epZ_Vjuin3rPrR3M-LsS7caPRE7eUmvLbbUfZhvp7FO08FkwECFmXvRpB8zardl_qXuRrIkKF_9wTlOabFR100eE39UVyu0oRDzvZ_0y3mQyMIcAT-oyZA6hZqNRh20bMeEVagJQAKzXhIlOZV1"/>
+<div>
+<h3 class="text-lg font-headline font-bold text-on-surface">Sarah Miller</h3>
+<p class="text-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs" data-icon="favorite">favorite</span>
+                            Unidad 221 • Nivel Jardín
+                        </p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter mb-1">Llegada</p>
+<p class="text-sm font-semibold text-on-surface">03:15 PM</p>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter mb-1">Duración</p>
+<p class="text-sm font-semibold text-on-surface">0h 42m</p>
+</div>
+</div>
+<button class="w-full bg-surface-variant text-on-surface py-3 rounded-xl font-bold text-sm tracking-tight flex items-center justify-center gap-2 hover:bg-surface-bright active:scale-95 transition-all">
+                    Registrar Salida
+                    <span class="material-symbols-outlined text-base" data-icon="logout">logout</span>
+</button>
+</div>
+<!-- Visitor Card 5: Delivery -->
+<div class="bg-surface-container-high rounded-xl p-6 relative overflow-hidden group hover:bg-surface-bright transition-all duration-300">
+<div class="absolute top-4 right-4 bg-on-secondary-fixed/20 text-on-secondary-fixed-variant text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md">
+                    Entrega
+                </div>
+<div class="flex items-start gap-5 mb-6">
+<img alt="Visitor" class="w-16 h-16 rounded-xl object-cover border border-outline-variant/20" data-alt="Close up of a man with a beard wearing a baseball cap and grey hoodie, neutral background, sharp focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwrsgg9EHWN3qlNXGauKZs0aRol3r03jbr9Xtz7Y4SH2LltBTGnmarZDXwhPf-lCjh6FdHx_j85E-n8l96Xr6geYbuTH6YP7gUlOpMWALa147UyZdSSGLIa0Zy5UOobcQ23xZy34p6LzQoK1AG_KKGBqjqnxicaA-bg7r4o8_gVRC6uqqCXsrwAbdXeqbRYesnko2xOP7hr0iqpwIYrF1z1GJ3tR4LwloFNBRdgnlXoIaJQENKDuV4QQelaZ5uqaLxGcMw63Zbglxr"/>
+<div>
+<h3 class="text-lg font-headline font-bold text-on-surface">David Vance</h3>
+<p class="text-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs" data-icon="local_shipping">local_shipping</span>
+                            Unidad 102 • Entrega en Lobby
+                        </p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter mb-1">Llegada</p>
+<p class="text-sm font-semibold text-on-surface">03:52 PM</p>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter mb-1">Duración</p>
+<p class="text-sm font-semibold text-on-surface">0h 05m</p>
+</div>
+</div>
+<button class="w-full bg-surface-variant text-on-surface py-3 rounded-xl font-bold text-sm tracking-tight flex items-center justify-center gap-2 hover:bg-surface-bright active:scale-95 transition-all">
+                    Registrar Salida
+                    <span class="material-symbols-outlined text-base" data-icon="logout">logout</span>
+</button>
+</div>
+<!-- Quick Action Card -->
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col items-center justify-center text-center group border-2 border-dashed border-outline-variant/20 hover:border-primary/40 transition-all cursor-pointer">
+<div class="w-14 h-14 rounded-full bg-primary-container/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="person_add">person_add</span>
+</div>
+<h3 class="text-lg font-headline font-bold text-on-surface">Nueva Entrada</h3>
+<p class="text-xs text-on-surface-variant mt-1">Registrar un visitante manualmente</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#131313]/80 backdrop-blur-xl border-t border-[#e7e5e5]/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] rounded-t-2xl">
+<a class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Panel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="search">search</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Buscar</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#1f2020] text-[#adc6ff] rounded-xl px-4 py-2 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Visitantes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="warning">warning</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Incidentes</span>
+</a>
+</nav>
+</body></html>

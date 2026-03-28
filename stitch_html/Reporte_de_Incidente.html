@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reporte de Incidente | EntryShield</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#adc6ff",
+              "outline": "#767575",
+              "on-background": "#e7e5e5",
+              "on-secondary-fixed-variant": "#5a5b63",
+              "surface-container-lowest": "#000000",
+              "on-primary-fixed-variant": "#0058bb",
+              "tertiary-fixed": "#69f6b8",
+              "surface-container-highest": "#252626",
+              "on-primary-container": "#bcd0ff",
+              "on-surface-variant": "#acabaa",
+              "surface": "#0e0e0e",
+              "on-secondary-fixed": "#3e3f47",
+              "tertiary": "#9bffce",
+              "secondary-container": "#3a3b43",
+              "on-error-container": "#ff9993",
+              "on-secondary-container": "#bfbec8",
+              "background": "#0e0e0e",
+              "on-tertiary-fixed": "#00452d",
+              "on-primary-fixed": "#003d85",
+              "secondary-fixed-dim": "#d4d3dd",
+              "primary-fixed": "#d8e2ff",
+              "on-tertiary": "#006443",
+              "surface-bright": "#2b2c2c",
+              "on-error": "#490106",
+              "inverse-on-surface": "#565555",
+              "error-dim": "#bb5551",
+              "tertiary-fixed-dim": "#58e7ab",
+              "surface-container-low": "#131313",
+              "secondary-fixed": "#e3e1ec",
+              "surface-container-high": "#1f2020",
+              "primary-fixed-dim": "#c2d4ff",
+              "secondary-dim": "#9d9da6",
+              "inverse-surface": "#fcf9f8",
+              "secondary": "#9d9da6",
+              "outline-variant": "#484848",
+              "error-container": "#7f2927",
+              "inverse-primary": "#005bc2",
+              "primary-dim": "#97b9ff",
+              "surface-variant": "#252626",
+              "error": "#ee7d77",
+              "tertiary-container": "#69f6b8",
+              "surface-dim": "#0e0e0e",
+              "on-tertiary-fixed-variant": "#006544",
+              "tertiary-dim": "#58e7ab",
+              "primary-container": "#004493",
+              "surface-container": "#191a1a",
+              "on-surface": "#e7e5e5",
+              "on-tertiary-container": "#005a3c",
+              "on-secondary": "#1f2027",
+              "primary": "#adc6ff",
+              "on-primary": "#003d87"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-glass {
+            background: rgba(19, 19, 19, 0.6);
+            backdrop-filter: blur(12px);
+        }
+        .cta-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #004493 100%);
+        }
+        .pulse-dot {
+            box-shadow: 0 0 0 0 rgba(105, 246, 184, 0.7);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(105, 246, 184, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(105, 246, 184, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(105, 246, 184, 0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30 min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-6 h-20 w-full fixed top-0 z-50 bg-[#131313]/60 backdrop-blur-lg bg-gradient-to-b from-[#131313] to-transparent">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#adc6ff]" data-icon="shield">shield</span>
+<span class="text-xl font-extrabold text-[#e7e5e5] tracking-tighter font-headline">EntryShield</span>
+<div class="ml-4 flex items-center gap-2 bg-surface-container-high px-3 py-1 rounded-full">
+<div class="w-2 h-2 rounded-full bg-tertiary pulse-dot"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-tertiary">Estado del Sistema</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-8 text-[#e7e5e5]/60 font-label text-sm font-semibold">
+<a class="hover:text-[#e7e5e5] transition-colors" href="#">Panel</a>
+<a class="hover:text-[#e7e5e5] transition-colors" href="#">Buscar</a>
+<a class="text-[#adc6ff]" href="#">Incidentes</a>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-bright flex items-center justify-center border border-outline-variant/20 overflow-hidden">
+<img alt="Perfil de Usuario" class="w-full h-full object-cover" data-alt="professional headshot of a security supervisor in a dark uniform with a subtle grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7EE4hTD67NojO6GDKiECBLEnPgM2y-M95tElCbcAQL0LJB5n9okq8S1B2NPZt0g7vWJbyUclEfkIxNNgOPNF_gP-cQ3Q_Pdyma5-QPZ53nV7xbuKCS9scIvRcbVMkTH5tb7GFVR2wgs00E8uBaU5Ebqklu0amFFbNm7B34yVs0xCE3yZ32GZCHca9qqrBymT40upOvSPVh8oirtcICxhYBLIlVSkAi0iyMb-cR2J2tXdEY_Gt6Ema38eGbqIeIQg0QmSuumWaaxL0"/>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Form Section -->
+<div class="lg:col-span-8 space-y-8">
+<div class="flex flex-col gap-2">
+<h1 class="text-4xl md:text-5xl font-headline font-bold tracking-[-0.02em] text-on-surface">Crear Reporte de Incidente</h1>
+<p class="text-on-surface-variant max-w-2xl">Registre brechas de seguridad, daños a la propiedad o violaciones de políticas. Todos los reportes tienen sello de tiempo y están encriptados para cumplimiento normativo.</p>
+</div>
+<!-- Main Form Card -->
+<div class="bg-surface-container-high rounded-xl p-8 shadow-2xl border border-outline-variant/10">
+<form class="space-y-10">
+<!-- Search & Link -->
+<div class="space-y-4">
+<label class="font-headline font-bold text-sm tracking-wide text-primary uppercase">Vincular Sujeto</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-lg py-4 pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Buscar visitante, reserva o número de unidad..." type="text"/>
+</div>
+<div class="flex gap-2 flex-wrap">
+<span class="text-[11px] font-bold text-on-surface-variant/70 uppercase pt-1 px-1">Filtro Rápido:</span>
+<button class="px-3 py-1 bg-surface-variant hover:bg-surface-bright rounded text-xs transition-colors" type="button">Visitantes Recientes</button>
+<button class="px-3 py-1 bg-surface-variant hover:bg-surface-bright rounded text-xs transition-colors" type="button">Reservas Activas</button>
+<button class="px-3 py-1 bg-surface-variant hover:bg-surface-bright rounded text-xs transition-colors" type="button">Lista de Unidades</button>
+</div>
+</div>
+<!-- Templates & Severity -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<label class="font-headline font-bold text-sm tracking-wide text-primary uppercase">Plantillas Rápidas</label>
+<div class="flex flex-col gap-2">
+<button class="flex items-center justify-between p-4 bg-surface-container-lowest hover:bg-surface-bright rounded-lg border border-transparent hover:border-outline-variant/30 transition-all text-left group" type="button">
+<span class="text-sm">Música Alta</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity" data-icon="bolt">bolt</span>
+</button>
+<button class="flex items-center justify-between p-4 bg-surface-container-lowest hover:bg-surface-bright rounded-lg border border-transparent hover:border-outline-variant/30 transition-all text-left group" type="button">
+<span class="text-sm">Invitado No Autorizado</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity" data-icon="bolt">bolt</span>
+</button>
+<button class="flex items-center justify-between p-4 bg-surface-container-lowest hover:bg-surface-bright rounded-lg border border-transparent hover:border-outline-variant/30 transition-all text-left group" type="button">
+<span class="text-sm">Daños a la Propiedad</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity" data-icon="bolt">bolt</span>
+</button>
+</div>
+</div>
+<div class="space-y-4">
+<label class="font-headline font-bold text-sm tracking-wide text-primary uppercase">Nivel de Gravedad</label>
+<div class="grid grid-cols-3 gap-2 bg-surface-container-lowest p-1 rounded-xl">
+<button class="py-3 px-2 rounded-lg text-xs font-bold uppercase tracking-tighter transition-all bg-tertiary-container/10 text-tertiary-fixed border border-tertiary-container/20" type="button">Bajo</button>
+<button class="py-3 px-2 rounded-lg text-xs font-bold uppercase tracking-tighter transition-all hover:bg-secondary-container/20 text-on-secondary-container" type="button">Medio</button>
+<button class="py-3 px-2 rounded-lg text-xs font-bold uppercase tracking-tighter transition-all hover:bg-error-container/20 text-on-error-container" type="button">Alto</button>
+</div>
+<div class="p-4 rounded-lg bg-surface-variant/30 border-l-2 border-tertiary-fixed">
+<p class="text-[11px] leading-relaxed text-on-surface-variant">Los incidentes de gravedad baja se registran solo para registros internos y no activan alertas inmediatas a supervisores.</p>
+</div>
+</div>
+</div>
+<!-- Description -->
+<div class="space-y-4">
+<label class="font-headline font-bold text-sm tracking-wide text-primary uppercase">Notas del Personal sobre el Incidente</label>
+<textarea class="w-full bg-surface-container-lowest border-none rounded-xl p-4 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary/20 transition-all resize-none" placeholder="Proporcione una descripción detallada del evento, incluyendo las partes involucradas y las acciones tomadas..." rows="6"></textarea>
+</div>
+<!-- Evidence Upload -->
+<div class="space-y-4">
+<label class="font-headline font-bold text-sm tracking-wide text-primary uppercase">Galería de Evidencias</label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="aspect-square rounded-xl bg-surface-container-lowest border-2 border-dashed border-outline-variant/30 flex flex-col items-center justify-center gap-2 hover:border-primary/50 cursor-pointer transition-colors group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="add_a_photo">add_a_photo</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Subir</span>
+</div>
+<!-- Mock Uploaded Items -->
+<div class="aspect-square rounded-xl overflow-hidden relative group">
+<img alt="Evidencia 1" class="w-full h-full object-cover" data-alt="Close-up of a scratched metal door frame with visible scuff marks in a hallway with dim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL0hTiNGDCx4HrTPyr7wN9N5Xgy6Jh4GCINbwlov-77oERh19FZOsadXnD3ahhidX4rM9b3tl95lVQ8EwNhl--IG230TpYL9OGJBr8K5A7neOKRaKx4VlMWNx1ZaNe0XY6TL4M5RVh7DbIzw39KgXJqo0o-apaoQo-T2PUm_jVxaZt5Jd55WphQoK8j1Qm7EE4h9-Q4HnJC9vaHmyq7tZRKoo8ah--KY9K1rboLsZnOsYuwbZhQ9DKNW1g2N2s358UbD7AQa5Dds1-"/>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="material-symbols-outlined text-error" data-icon="delete" type="button">delete</button>
+</div>
+</div>
+<div class="aspect-square rounded-xl overflow-hidden relative group">
+<img alt="Evidencia 2" class="w-full h-full object-cover" data-alt="blurred security camera footage showing a person in a dark hoodie standing in a garage area" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtpdi20bF5AJPKUtKhBcmJTzHzIHnJE8D6d0OYWsQfLNgNhEh6sY3iJZk278f48JssJsk2BJY7M0Ot7CbdoqSxf4_WmHosIJ3ky-i86y6jZXl9hl8FhngBjVx518riB31YS5In0TkHgFbvQdfpSNFbJS6dAXCsxs-eY0KjlVVIGZOe8tXqUJ6CLlQ-QsDKrt0lZSk1MfeGqm5D9JQqD0ZQMQ-7-a2DdzWrWmk4AD6kgMGezUVVFyMXVOu6jGf4R1eHrSQ7bfDKP70R"/>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="material-symbols-outlined text-error" data-icon="delete" type="button">delete</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-outline-variant/20">
+<button class="flex items-center gap-2 px-6 py-4 rounded-xl font-bold text-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all" type="button">
+<span class="material-symbols-outlined" data-icon="picture_as_pdf">picture_as_pdf</span>
+                            Generar Reporte PDF
+                        </button>
+<button class="w-full sm:w-auto px-12 py-4 rounded-lg cta-gradient text-on-primary font-headline font-extrabold text-base tracking-tight shadow-xl shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] transition-all" type="submit">
+                            Enviar Incidente
+                        </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Sidebar / Context -->
+<aside class="lg:col-span-4 space-y-6">
+<!-- Log Metadata -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/5">
+<h3 class="font-headline font-bold text-xs uppercase tracking-[0.15em] text-on-surface-variant/60 mb-6">Metadatos del Reporte</h3>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<div>
+<p class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant">Marca de Tiempo</p>
+<p class="font-mono text-sm mt-1">2023-10-27 14:42:05 UTC</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+</div>
+<div>
+<p class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant">ID del Personal</p>
+<p class="font-mono text-sm mt-1">ALPHA-992-SEC</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<div>
+<p class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant">Terminal</p>
+<p class="font-mono text-sm mt-1">Gate North-A (Tablet 4)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Compliance Warning -->
+<div class="bg-primary-container/10 rounded-xl p-6 border border-primary/10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<h4 class="font-headline font-bold text-sm text-primary">Protocolo de Seguridad</h4>
+</div>
+<p class="text-xs leading-relaxed text-on-surface-variant">
+                    Todos los informes presentados a través de EntryShield están sujetos a la <span class="text-on-surface font-semibold underline underline-offset-4 decoration-primary/30">Ley de Cumplimiento de Privacidad v2.4</span>. La modificación no autorizada de los registros de seguridad es un delito federal. Asegúrese de que todas las pruebas se capturen in situ.
+                </p>
+</div>
+<!-- Recent Incidents Mini-List -->
+<div class="space-y-4">
+<h3 class="font-headline font-bold text-xs uppercase tracking-[0.15em] text-on-surface-variant/60 ml-2">Su Actividad Reciente</h3>
+<div class="space-y-2">
+<div class="bg-surface-container-high/50 p-4 rounded-lg border border-transparent hover:border-outline-variant/10 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] px-2 py-0.5 bg-error-container/20 text-on-error-container rounded font-bold uppercase">Alto</span>
+<span class="text-[10px] text-on-surface-variant/60 font-mono">hace 2h</span>
+</div>
+<p class="text-xs font-semibold text-on-surface">Intento de Entrada Forzada: Unidad 402</p>
+</div>
+<div class="bg-surface-container-high/50 p-4 rounded-lg border border-transparent hover:border-outline-variant/10 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] px-2 py-0.5 bg-tertiary-container/20 text-on-tertiary-container rounded font-bold uppercase">Bajo</span>
+<span class="text-[10px] text-on-surface-variant/60 font-mono">hace 5h</span>
+</div>
+<p class="text-xs font-semibold text-on-surface">Violación de Estacionamiento: Ranura B-12</p>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- NavigationDrawer (Mobile/Global Access) -->
+<div class="fixed inset-y-0 left-0 w-80 bg-[#0e0e0e] z-[60] -translate-x-full lg:translate-x-0 hidden lg:flex flex-col shadow-2xl shadow-black border-r border-[#e7e5e5]/5" id="drawer">
+<div class="flex flex-col h-full py-8">
+<div class="px-8 mb-10 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high overflow-hidden border border-outline-variant/20">
+<img alt="Miembro del Personal" class="w-full h-full object-cover" data-alt="Staff profile avatar showing a high-tech corporate security badge profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2Bpd29jL5pyUaKTWPyJ2JIVDzF75jks6N8XBHE5sVKixfWZ07ZS8NIArA8QkulhCEECJv-jR7NJZlCEYqNHIar9ISDNyjbPb9hBV08jbFKiwsEcfwETkhi6VTwMRbEdTL3Ed0TzpmUKjnJ_AZV6Wb2b8hBD2TOycFFVJ7C-2mRimw1Eqfno5fvavmDlYvT-iwKfUSQgbN9HwAs_xUnoUbMioevvmJ40y65-ql1heFfk7SVULGj-6pJgQr2IIxBzoJXaqIx6XTFQW6"/>
+</div>
+<div>
+<h2 class="text-[#e7e5e5] font-black font-headline">Modo Staff</h2>
+<p class="text-[10px] text-[#adc6ff]/60 uppercase tracking-widest font-bold">Luxury Estates Alpha</p>
+</div>
+</div>
+<nav class="flex-1 px-2 space-y-1">
+<a class="flex items-center gap-4 text-[#e7e5e5]/50 px-6 py-4 hover:bg-[#131313] hover:text-[#e7e5e5] transition-all duration-200 ease-in-out font-['Manrope'] font-semibold rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+                    Reportes
+                </a>
+<a class="flex items-center gap-4 text-[#e7e5e5]/50 px-6 py-4 hover:bg-[#131313] hover:text-[#e7e5e5] transition-all duration-200 ease-in-out font-['Manrope'] font-semibold rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="apartment">apartment</span>
+                    Propiedades
+                </a>
+<a class="flex items-center gap-4 text-[#e7e5e5]/50 px-6 py-4 hover:bg-[#131313] hover:text-[#e7e5e5] transition-all duration-200 ease-in-out font-['Manrope'] font-semibold rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+                    Reglas
+                </a>
+<a class="flex items-center gap-4 text-[#e7e5e5]/50 px-6 py-4 hover:bg-[#131313] hover:text-[#e7e5e5] transition-all duration-200 ease-in-out font-['Manrope'] font-semibold rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+                    Cumplimiento
+                </a>
+<a class="flex items-center gap-4 text-[#e7e5e5]/50 px-6 py-4 hover:bg-[#131313] hover:text-[#e7e5e5] transition-all duration-200 ease-in-out font-['Manrope'] font-semibold rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    Ajustes
+                </a>
+</nav>
+<div class="px-8 pt-8 mt-auto border-t border-[#e7e5e5]/5">
+<p class="text-[10px] text-[#e7e5e5]/30 font-mono tracking-widest">v2.4.0 • SESIÓN-SEGURA</p>
+</div>
+</div>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<footer class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#131313]/80 backdrop-blur-xl border-t border-[#e7e5e5]/10 rounded-t-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<button class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200 transition-all">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Panel</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200 transition-all">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Buscar</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200 transition-all">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Visitantes</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-[#1f2020] text-[#adc6ff] rounded-xl px-4 py-2 active:scale-90 duration-200 transition-all">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Incidentes</span>
+</button>
+</footer>
+</body></html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EntryShield | Selector de Propiedad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#adc6ff",
+              "outline": "#767575",
+              "on-background": "#e7e5e5",
+              "on-secondary-fixed-variant": "#5a5b63",
+              "surface-container-lowest": "#000000",
+              "on-primary-fixed-variant": "#0058bb",
+              "tertiary-fixed": "#69f6b8",
+              "surface-container-highest": "#252626",
+              "on-primary-container": "#bcd0ff",
+              "on-surface-variant": "#acabaa",
+              "surface": "#0e0e0e",
+              "on-secondary-fixed": "#3e3f47",
+              "tertiary": "#9bffce",
+              "secondary-container": "#3a3b43",
+              "on-error-container": "#ff9993",
+              "on-secondary-container": "#bfbec8",
+              "background": "#0e0e0e",
+              "on-tertiary-fixed": "#00452d",
+              "on-primary-fixed": "#003d85",
+              "secondary-fixed-dim": "#d4d3dd",
+              "primary-fixed": "#d8e2ff",
+              "on-tertiary": "#006443",
+              "surface-bright": "#2b2c2c",
+              "on-error": "#490106",
+              "inverse-on-surface": "#565555",
+              "error-dim": "#bb5551",
+              "tertiary-fixed-dim": "#58e7ab",
+              "surface-container-low": "#131313",
+              "secondary-fixed": "#e3e1ec",
+              "surface-container-high": "#1f2020",
+              "primary-fixed-dim": "#c2d4ff",
+              "secondary-dim": "#9d9da6",
+              "inverse-surface": "#fcf9f8",
+              "secondary": "#9d9da6",
+              "outline-variant": "#484848",
+              "error-container": "#7f2927",
+              "inverse-primary": "#005bc2",
+              "primary-dim": "#97b9ff",
+              "surface-variant": "#252626",
+              "error": "#ee7d77",
+              "tertiary-container": "#69f6b8",
+              "surface-dim": "#0e0e0e",
+              "on-tertiary-fixed-variant": "#006544",
+              "tertiary-dim": "#58e7ab",
+              "primary-container": "#004493",
+              "surface-container": "#191a1a",
+              "on-surface": "#e7e5e5",
+              "on-tertiary-container": "#005a3c",
+              "on-secondary": "#1f2027",
+              "primary": "#adc6ff",
+              "on-primary": "#003d87"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(31, 32, 32, 0.4);
+        backdrop-filter: blur(12px);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen">
+<!-- TopAppBar from Shared Components JSON -->
+<header class="flex justify-between items-center px-6 h-20 w-full fixed top-0 z-50 bg-[#131313]/60 backdrop-blur-lg bg-gradient-to-b from-[#131313] to-transparent">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#adc6ff]" data-icon="shield">shield</span>
+<h1 class="text-xl font-extrabold text-[#e7e5e5] tracking-tighter font-['Manrope']">EntryShield</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-full">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse shadow-[0_0_8px_rgba(105,246,184,0.6)]"></span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Estado del Sistema en Vivo</span>
+</div>
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden hover:scale-105 transition-transform cursor-pointer">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="close-up portrait of professional security staff member in a subtle dark uniform, professional studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAITCKMvDoKid-xvz7VgZAze3NsPksnXC_FPK3itrJkQzySiDMnmDi4P15pc6yAvWnFN4dCr7b6nAtTqqdAhya0cTEZSL-comjOekqlsK8AtEp6mbRcJRqbGsPgOyUyJNrZBfhl_xmPh2wI8rEGOoNW6JaqRLsQaKxsW0uyFcI9oui_IcEsaTS87ULEHue2kaT4MAKvfC9Ihxge64mH0SrtpjhKo3XQgWIeOpFheApdZbNYV5KTsqYesSNLbD1dbM9R8oS-35VWD-Oz"/>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-6 max-w-7xl mx-auto">
+<!-- Hero Section / Header -->
+<section class="mb-12">
+<h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface tracking-[-0.03em] mb-4">
+                Seleccionar Ubicación Activa
+            </h2>
+<p class="text-on-surface-variant max-w-2xl text-lg leading-relaxed">
+                Bienvenido de nuevo. Por favor, designe la propiedad principal para su turno actual para iniciar el monitoreo en tiempo real.
+            </p>
+</section>
+<!-- Search & Filter Bar -->
+<section class="mb-10 flex flex-col md:flex-row gap-4">
+<div class="relative flex-grow group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant transition-colors group-focus-within:text-primary" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/20 transition-all font-body" placeholder="Buscar propiedades por nombre o dirección..." type="text"/>
+</div>
+<button class="bg-surface-container-high hover:bg-surface-bright text-on-surface px-6 py-4 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95 font-medium">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span>Filtros</span>
+</button>
+</section>
+<!-- Properties Grid (Bento/Asymmetric Layout) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Featured Property (Large) -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-2xl bg-surface-container-low transition-all hover:translate-y-[-4px] cursor-pointer">
+<div class="aspect-[16/9] w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="ultra-modern luxury villa exterior with glass walls and architectural lighting at twilight, sleek dark stone accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKpmUoOT2YPJ3CNCVwoCkIklEzEvNIwfRNT3ErYv5gy5hAk2DGBTgywjhI73lF8wDiXOvpnXTwvF6NoDN4Kgyv0aroC4DqtdcQWOcn2NDydk2SLcIl2oCVTTbD3s4rFlgupmTSXbIj4IVM15s2sNRuywpmLIY0HopnrS-gquCwKaoAzut1KLpY24dE8YcbaCnk1aPGWVfUjfF6zXFcf9FANQIReC3A7OJ7dHti_pmJCJ7WXSsiX3eFgk4eVnsw1Lo80qlFA5J_7XPE"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8">
+<div class="flex justify-between items-end">
+<div>
+<span class="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-3">Sitio Prioritario</span>
+<h3 class="text-3xl font-headline font-bold text-[#e7e5e5] mb-1">The Obsidian Heights</h3>
+<div class="flex items-center gap-2 text-on-surface/70">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+<span class="text-sm font-medium">Beverly Hills, CA 90210</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-2 mb-2">
+<span class="text-tertiary font-bold text-2xl tracking-tight">24</span>
+<span class="text-on-surface/60 text-xs font-medium uppercase tracking-tighter text-right">Visitantes<br/>Activos</span>
+</div>
+<button class="px-6 py-3 bg-gradient-to-br from-[#adc6ff] to-[#004493] text-[#003d87] font-bold rounded-lg transition-all active:scale-95">
+                                Seleccionar Sitio
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Property Card 2 -->
+<div class="md:col-span-4 group bg-surface-container-high rounded-2xl overflow-hidden flex flex-col transition-all hover:bg-surface-bright border border-outline-variant/10">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="luxurious penthouse interior with panoramic floor-to-ceiling windows overlooking a metropolitan skyline at night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcieqvC_9zD98VWDT12eMkFi3_T4tP3vcVW0ceJCFIkayccO41IQL3xgCPXGP7m6YoePkFlJQwCY0bPfC87sVt8H1BLrfElIuO4BEaNKiN6ObT3hac6Lwe-BzJpLj26zstZloHo2e_AldDOCMjb3zOQy-FqbSjHqMH8nZ6wNTQl_fQRhIsoZsenY6-8zdzeii1cTV0OtATIsGyooXi08thtcjdsRE1uYlgnE2gQsw6m2s2r8XYHCLCViPa82gF3ECApyAJxYMIh8tY"/>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-1">Silver Lining Suites</h3>
+<p class="text-on-surface-variant text-sm mb-6 flex items-center gap-1">
+<span class="material-symbols-outlined text-base" data-icon="location_on">location_on</span>
+                        Downtown Manhattan, NY
+                    </p>
+<div class="mt-auto flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-xs text-on-surface-variant uppercase font-bold tracking-widest">Visitantes</span>
+<span class="text-lg font-bold text-on-surface">12</span>
+</div>
+<button class="p-3 rounded-full bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Property Card 3 -->
+<div class="md:col-span-4 group bg-surface-container-high rounded-2xl overflow-hidden flex flex-col transition-all hover:bg-surface-bright border border-outline-variant/10">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="minimalist white concrete modern house with infinity pool and palm trees under a clear blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi0cWe6JF2g0qhuTzwR97Qb7GRMg0W4hVEM6TI5PfEaZ6sQIjsPAz6SpVjF_oW2sgOZJqm86LDHQ2oYRCu8GkDA3VJTtTOEqQPtlsW9cMsDoB2WSlBPM4MQC9z4Zpk29sYY81L6vEiMxsAvT-kE7m_2FZWCwMsUN3fnxYD1jHQfv0EMOg0T4IAcXc_4k8ulD41Ru9Moqnk8Q79-V97n-DTJELw9PDeMY_dTrfTEb8rFfqwt-N-BqienpYVQIVH3lK03LyA_Uz5Mnt3"/>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-1">Azure Coastal Estate</h3>
+<p class="text-on-surface-variant text-sm mb-6 flex items-center gap-1">
+<span class="material-symbols-outlined text-base" data-icon="location_on">location_on</span>
+                        Malibu, CA
+                    </p>
+<div class="mt-auto flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-xs text-on-surface-variant uppercase font-bold tracking-widest">Visitantes</span>
+<span class="text-lg font-bold text-on-surface">08</span>
+</div>
+<button class="p-3 rounded-full bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Property Card 4 -->
+<div class="md:col-span-4 group bg-surface-container-high rounded-2xl overflow-hidden flex flex-col transition-all hover:bg-surface-bright border border-outline-variant/10">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="large classic brick mansion with manicured lawns and symmetrical grand architecture in evening light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRGqykedEfFSDYIrB78Az8cmFQuPjKtJZesI94SGbBRZu7d7NSzHvjzrfko4wgd09hAp8L7SKLt3NH_DEKARp7pzGHtUDr5bYnHhHqq4I386cnsObX_44wosYknFmsngv0-_XBSQzL-g_qVBF_qd46M7bgBxJ0W2M0J4MvrfzvmJwOhspaKjaC4u2HqLCLggXeD3Yq4j8VC9zTU3LuNwbvMpKI7Sn-zRfM09CIdBSKVF2SOAm5DX6dZaF2GovpxgrqptVx6ycr_Kyf"/>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-1">The Gentry Manor</h3>
+<p class="text-on-surface-variant text-sm mb-6 flex items-center gap-1">
+<span class="material-symbols-outlined text-base" data-icon="location_on">location_on</span>
+                        Greenwich, CT
+                    </p>
+<div class="mt-auto flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-xs text-on-surface-variant uppercase font-bold tracking-widest">Visitantes</span>
+<span class="text-lg font-bold text-on-surface">31</span>
+</div>
+<button class="p-3 rounded-full bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Property Card 5 (Small List Style) -->
+<div class="md:col-span-4 group bg-surface-container-high rounded-2xl p-6 transition-all hover:bg-surface-bright border border-outline-variant/10 flex flex-col justify-center items-center border-dashed border-2 opacity-60">
+<span class="material-symbols-outlined text-4xl mb-2 text-on-surface-variant" data-icon="add_business">add_business</span>
+<span class="text-on-surface font-semibold">Solicitar Acceso a Propiedad</span>
+<p class="text-xs text-on-surface-variant text-center mt-2 px-8 leading-relaxed">Contacte a su supervisor regional para añadir una nueva propiedad a su perfil.</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar from Shared Components JSON -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#131313]/80 backdrop-blur-xl border-t border-[#e7e5e5]/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] rounded-t-2xl">
+<a class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Panel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Buscar</span>
+</a>
+<!-- ACTIVE TAB: Properties -->
+<a class="flex flex-col items-center justify-center bg-[#1f2020] text-[#adc6ff] rounded-xl px-4 py-2 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="apartment">apartment</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Propiedades</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Incidentes</span>
+</a>
+</nav>
+</body></html>

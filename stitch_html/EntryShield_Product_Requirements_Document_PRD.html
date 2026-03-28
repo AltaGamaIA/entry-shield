@@ -1,0 +1,55 @@
+# EntryShield: Luxury Short-Term Rental Security Platform
+
+## 1. Executive Summary
+EntryShield is a neutral, independent visitor management platform designed for high-end short-term rentals. It provides security teams, hosts, and property managers with a professional, privacy-first tool to screen visitors, log access, and manage property safety without being tied to a specific property brand.
+
+## 2. User Personas
+*   **Security Guard / Doorman:** Primary user for visitor check-in/out and ID scanning. Needs a fast, mobile-optimized interface.
+*   **Concierge / Host:** Monitors guest arrivals and approves visitor access.
+*   **Property Manager:** Reviews logs, manages property settings, and handles incidents.
+*   **Admin / Compliance Manager:** Configures global rules, exports data for audits, and ensures legal compliance.
+
+## 3. Core Workflows
+### 3.1 Reservation Lookup
+*   Search by Guest Name, Property, Code, or Unit.
+*   Display: Guest details, occupancy limits, visitor policies, and "House Rule" alerts.
+
+### 3.2 Visitor Registration & Screening
+*   Capture Legal Name, ID details (Cédula, Passport, PPT/PPT), and Contact Info.
+*   **Document Scanning:** OCR-enabled camera capture for Colombian/Venezuelan IDs.
+*   **Facial Verification:** Selfie capture with liveness checks and ID-to-selfie comparison (staff review only).
+
+### 3.3 Entry / Exit Logging
+*   One-tap Check-In/Check-Out.
+*   Real-time "Currently Inside" dashboard.
+*   Overstay alerts based on configurable thresholds.
+
+### 3.4 Risk & Incident Management
+*   Policy Engine: Max visitor rules, visiting hours, blocked list checks.
+*   Soft Risk Scoring: Low / Medium / High (behavior-based, not discriminatory).
+*   Incident Reports: Document issues with photos, notes, and PDF export.
+
+## 4. Technical Architecture
+*   **Frontend:** React / Next.js (Mobile-first, PWA support).
+*   **Backend:** Firebase (Auth, Firestore, Cloud Functions).
+*   **Storage:** Secure Cloud Storage (GCS) for encrypted ID and selfie images.
+*   **AI/ML:** Google Cloud Vision API for OCR; Face API for verification.
+
+## 5. Database Schema (High-Level)
+*   **Properties:** `id`, `name`, `address`, `config` (rules, thresholds).
+*   **Users:** `id`, `name`, `role`, `property_access`.
+*   **Reservations:** `id`, `property_id`, `guest_name`, `dates`, `visitor_policy`.
+*   **Visitors:** `id`, `reservation_id`, `name`, `id_data`, `selfie_url`, `status`.
+*   **Visits:** `id`, `visitor_id`, `check_in_time`, `check_out_time`, `staff_id`.
+*   **Incidents:** `id`, `visit_id`, `description`, `evidence_urls`, `severity`.
+
+## 6. Design Principles
+*   **Aesthetic:** Luxury SaaS. Neutral, trustworthy, minimal, premium.
+*   **Theme:** Dark-mode focused (elegant), high contrast for outdoor use.
+*   **UX:** Large, accessible touch targets for staff in high-pressure environments.
+*   **Transparency:** Clear consent screens and privacy notices.
+
+## 7. Roadmap & Future Integrations
+*   **Phase 1:** Core registration, scanning, and logging.
+*   **Phase 2:** Advanced reporting, incident module, and multi-property dashboard.
+*   **Phase 3:** WhatsApp notifications, Smart Lock integration (Salto/August), and PMS sync (Guesty/Hospitable).

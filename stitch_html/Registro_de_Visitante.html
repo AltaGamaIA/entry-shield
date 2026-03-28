@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Registro de Nuevo Visitante - EntryShield</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#adc6ff",
+              "outline": "#767575",
+              "on-background": "#e7e5e5",
+              "on-secondary-fixed-variant": "#5a5b63",
+              "surface-container-lowest": "#000000",
+              "on-primary-fixed-variant": "#0058bb",
+              "tertiary-fixed": "#69f6b8",
+              "surface-container-highest": "#252626",
+              "on-primary-container": "#bcd0ff",
+              "on-surface-variant": "#acabaa",
+              "surface": "#0e0e0e",
+              "on-secondary-fixed": "#3e3f47",
+              "tertiary": "#9bffce",
+              "secondary-container": "#3a3b43",
+              "on-error-container": "#ff9993",
+              "on-secondary-container": "#bfbec8",
+              "background": "#0e0e0e",
+              "on-tertiary-fixed": "#00452d",
+              "on-primary-fixed": "#003d85",
+              "secondary-fixed-dim": "#d4d3dd",
+              "primary-fixed": "#d8e2ff",
+              "on-tertiary": "#006443",
+              "surface-bright": "#2b2c2c",
+              "on-error": "#490106",
+              "inverse-on-surface": "#565555",
+              "error-dim": "#bb5551",
+              "tertiary-fixed-dim": "#58e7ab",
+              "surface-container-low": "#131313",
+              "secondary-fixed": "#e3e1ec",
+              "surface-container-high": "#1f2020",
+              "primary-fixed-dim": "#c2d4ff",
+              "secondary-dim": "#9d9da6",
+              "inverse-surface": "#fcf9f8",
+              "secondary": "#9d9da6",
+              "outline-variant": "#484848",
+              "error-container": "#7f2927",
+              "inverse-primary": "#005bc2",
+              "primary-dim": "#97b9ff",
+              "surface-variant": "#252626",
+              "error": "#ee7d77",
+              "tertiary-container": "#69f6b8",
+              "surface-container": "#191a1a",
+              "on-surface": "#e7e5e5",
+              "on-tertiary-container": "#005a3c",
+              "on-secondary": "#1f2027",
+              "primary": "#adc6ff",
+              "on-primary": "#003d87"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-header {
+        background: rgba(19, 19, 19, 0.6);
+        backdrop-filter: blur(12px);
+      }
+      input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: #adc6ff;
+        box-shadow: 0 0 0 2px rgba(173, 198, 255, 0.1);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30 selection:text-primary min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-6 h-20 w-full fixed top-0 z-50 bg-[#131313]/60 backdrop-blur-lg bg-gradient-to-b from-[#131313] to-transparent">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#adc6ff] text-2xl" data-icon="shield">shield</span>
+<h1 class="text-xl font-extrabold text-[#e7e5e5] tracking-tighter font-headline">EntryShield</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-high rounded-full border border-outline-variant/10">
+<span class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_rgba(155,255,206,0.6)]"></span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface/60">Sistema Activo</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-primary/20">
+<span class="material-symbols-outlined text-primary" data-icon="person">person</span>
+</div>
+</div>
+</header>
+<main class="pt-24 px-4 max-w-2xl mx-auto space-y-8">
+<!-- Header Section -->
+<section class="space-y-2">
+<h2 class="text-4xl font-extrabold font-headline tracking-tight text-on-surface leading-tight">Registro de Visitante</h2>
+<p class="text-on-surface-variant text-sm font-medium">Registre un nuevo visitante para acceso a zonas de alta seguridad.</p>
+</section>
+<!-- Status & Identification Capture (Visual Asymmetry) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Scan ID Button -->
+<button class="flex flex-col items-center justify-center p-8 bg-surface-container-high rounded-xl border border-outline-variant/10 hover:bg-surface-bright transition-all group active:scale-95">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="document_scanner">document_scanner</span>
+</div>
+<span class="font-headline font-bold text-on-surface">Escanear Frente de ID</span>
+<span class="text-xs text-on-surface-variant mt-1">Detección OCR Automática</span>
+</button>
+<!-- Selfie Button -->
+<button class="flex flex-col items-center justify-center p-8 bg-surface-container-high rounded-xl border border-outline-variant/10 hover:bg-surface-bright transition-all group active:scale-95">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="add_a_photo">add_a_photo</span>
+</div>
+<span class="font-headline font-bold text-on-surface">Tomar Selfie</span>
+<span class="text-xs text-on-surface-variant mt-1">Verificación Biométrica</span>
+</button>
+</div>
+<!-- Registration Form -->
+<form class="space-y-10">
+<!-- Personal Information Section -->
+<fieldset class="space-y-6">
+<legend class="text-xs font-bold uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+<span class="w-1 h-4 bg-primary rounded-full"></span>
+                    Detalles del Visitante
+                </legend>
+<div class="space-y-1">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider ml-1" for="name">Nombre Legal Completo</label>
+<input class="w-full h-14 bg-surface-container-lowest border-0 rounded-lg text-on-surface px-4 font-medium transition-all placeholder:text-on-surface-variant/30" id="name" placeholder="Johnathan Doe" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider ml-1" for="id-type">Tipo de Documento</label>
+<select class="w-full h-14 bg-surface-container-lowest border-0 rounded-lg text-on-surface px-4 font-medium transition-all appearance-none cursor-pointer" id="id-type">
+<option>Cédula</option>
+<option>Pasaporte</option>
+<option>Licencia de Conducir</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider ml-1" for="id-number">Número de Documento</label>
+<input class="w-full h-14 bg-surface-container-lowest border-0 rounded-lg text-on-surface px-4 font-medium transition-all placeholder:text-on-surface-variant/30" id="id-number" placeholder="8-000-0000" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider ml-1" for="nationality">Nacionalidad</label>
+<input class="w-full h-14 bg-surface-container-lowest border-0 rounded-lg text-on-surface px-4 font-medium transition-all" id="nationality" placeholder="Estados Unidos" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider ml-1" for="phone">Teléfono</label>
+<input class="w-full h-14 bg-surface-container-lowest border-0 rounded-lg text-on-surface px-4 font-medium transition-all" id="phone" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+</fieldset>
+<!-- Visit Logistics Section -->
+<fieldset class="space-y-6">
+<legend class="text-xs font-bold uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+<span class="w-1 h-4 bg-primary rounded-full"></span>
+                    Contexto de la Visita
+                </legend>
+<div class="space-y-1">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider ml-1" for="visit-person">Persona a Visitar</label>
+<input class="w-full h-14 bg-surface-container-lowest border-0 rounded-lg text-on-surface px-4 font-medium transition-all" id="visit-person" placeholder="Buscar miembro del personal..." type="text"/>
+</div>
+<div class="space-y-1">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider ml-1" for="visit-reason">Motivo de la Visita</label>
+<textarea class="w-full bg-surface-container-lowest border-0 rounded-lg text-on-surface p-4 font-medium transition-all resize-none" id="visit-reason" placeholder="ej. Mantenimiento Técnico, Entrega, Reunión" rows="2"></textarea>
+</div>
+</fieldset>
+<!-- Status Selector -->
+<fieldset class="space-y-4">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider ml-1">Estado de Entrada Actual</label>
+<div class="flex flex-wrap gap-3">
+<label class="relative flex-1 min-w-[100px] cursor-pointer group">
+<input checked="" class="peer sr-only" name="status" type="radio" value="pending"/>
+<div class="h-12 flex items-center justify-center rounded-lg bg-surface-container-low border border-outline-variant/10 text-on-surface/50 font-bold text-xs uppercase tracking-widest peer-checked:bg-secondary-container peer-checked:text-secondary peer-checked:border-secondary/30 transition-all">
+                            Pendiente
+                        </div>
+</label>
+<label class="relative flex-1 min-w-[100px] cursor-pointer group">
+<input class="peer sr-only" name="status" type="radio" value="inside"/>
+<div class="h-12 flex items-center justify-center rounded-lg bg-surface-container-low border border-outline-variant/10 text-on-surface/50 font-bold text-xs uppercase tracking-widest peer-checked:bg-tertiary-container/20 peer-checked:text-tertiary peer-checked:border-tertiary/30 transition-all">
+                            Adentro
+                        </div>
+</label>
+<label class="relative flex-1 min-w-[100px] cursor-pointer group">
+<input class="peer sr-only" name="status" type="radio" value="denied"/>
+<div class="h-12 flex items-center justify-center rounded-lg bg-surface-container-low border border-outline-variant/10 text-on-surface/50 font-bold text-xs uppercase tracking-widest peer-checked:bg-error-container/20 peer-checked:text-error peer-checked:border-error/30 transition-all">
+                            Denegado
+                        </div>
+</label>
+</div>
+</fieldset>
+<!-- Staff Notes -->
+<div class="space-y-1">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider ml-1" for="staff-notes">Notas Internas del Personal</label>
+<div class="p-1 bg-surface-container-high rounded-xl">
+<textarea class="w-full bg-surface-container-lowest border-0 rounded-lg text-on-surface p-4 font-medium transition-all resize-none" id="staff-notes" placeholder="Observaciones adicionales o alertas de seguridad..." rows="3"></textarea>
+</div>
+</div>
+<!-- Privacy & Consent -->
+<div class="p-4 bg-surface-container rounded-xl flex gap-4 items-start border border-outline-variant/5">
+<div class="flex items-center h-6">
+<input class="w-5 h-5 bg-surface-container-lowest border-outline-variant rounded-md text-primary focus:ring-primary/20" id="consent" type="checkbox"/>
+</div>
+<div class="text-[11px] leading-relaxed text-on-surface-variant">
+                    Confirmo que el visitante ha sido informado sobre los protocolos de <span class="text-primary font-bold cursor-pointer hover:underline">Privacidad</span> y retención de datos de EntryShield. Al registrar, verifico que toda la documentación proporcionada ha sido inspeccionada manualmente.
+                </div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-6 flex flex-col gap-4">
+<button class="w-full h-16 bg-gradient-to-br from-[#adc6ff] to-[#004493] text-on-primary font-headline font-extrabold text-lg rounded-xl shadow-lg shadow-primary/10 active:scale-95 transition-transform" type="submit">
+                    Autorizar Entrada
+                </button>
+<button class="w-full h-12 text-on-primary-fixed-variant font-headline font-bold text-sm tracking-wide active:opacity-60 transition-opacity" type="button">
+                    Descartar Registro
+                </button>
+</div>
+</form>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#131313]/80 backdrop-blur-xl border-t border-[#e7e5e5]/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden rounded-t-2xl">
+<a class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Tablero</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="search">search</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Buscar</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#1f2020] text-[#adc6ff] rounded-xl px-4 py-2 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="group">group</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Visitantes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="warning">warning</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Incidentes</span>
+</a>
+</nav>
+<!-- Side Navigation for larger screens (Desktop support placeholder based on drawer spec) -->
+<aside class="hidden md:flex fixed left-0 top-20 h-[calc(100vh-80px)] w-20 flex-col items-center py-8 bg-[#0e0e0e] border-r border-outline-variant/10 z-40">
+<div class="flex flex-col gap-8">
+<span class="material-symbols-outlined text-on-surface/40 hover:text-primary transition-colors cursor-pointer" data-icon="dashboard">dashboard</span>
+<span class="material-symbols-outlined text-primary" data-icon="person_add" style="font-variation-settings: 'FILL' 1;">person_add</span>
+<span class="material-symbols-outlined text-on-surface/40 hover:text-primary transition-colors cursor-pointer" data-icon="assessment">assessment</span>
+<span class="material-symbols-outlined text-on-surface/40 hover:text-primary transition-colors cursor-pointer" data-icon="apartment">apartment</span>
+<span class="material-symbols-outlined text-on-surface/40 hover:text-primary transition-colors cursor-pointer" data-icon="settings">settings</span>
+</div>
+</aside>
+</body></html>

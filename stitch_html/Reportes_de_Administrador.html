@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EntryShield | Reportes Administrativos y Analíticas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-tint": "#adc6ff",
+                        "outline": "#767575",
+                        "on-background": "#e7e5e5",
+                        "on-secondary-fixed-variant": "#5a5b63",
+                        "surface-container-lowest": "#000000",
+                        "on-primary-fixed-variant": "#0058bb",
+                        "tertiary-fixed": "#69f6b8",
+                        "surface-container-highest": "#252626",
+                        "on-primary-container": "#bcd0ff",
+                        "on-surface-variant": "#acabaa",
+                        "surface": "#0e0e0e",
+                        "on-secondary-fixed": "#3e3f47",
+                        "tertiary": "#9bffce",
+                        "secondary-container": "#3a3b43",
+                        "on-error-container": "#ff9993",
+                        "on-secondary-container": "#bfbec8",
+                        "background": "#0e0e0e",
+                        "on-tertiary-fixed": "#00452d",
+                        "on-primary-fixed": "#003d85",
+                        "secondary-fixed-dim": "#d4d3dd",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary": "#006443",
+                        "surface-bright": "#2b2c2c",
+                        "on-error": "#490106",
+                        "inverse-on-surface": "#565555",
+                        "error-dim": "#bb5551",
+                        "tertiary-fixed-dim": "#58e7ab",
+                        "surface-container-low": "#131313",
+                        "secondary-fixed": "#e3e1ec",
+                        "surface-container-high": "#1f2020",
+                        "primary-fixed-dim": "#c2d4ff",
+                        "secondary-dim": "#9d9da6",
+                        "inverse-surface": "#fcf9f8",
+                        "secondary": "#9d9da6",
+                        "outline-variant": "#484848",
+                        "error-container": "#7f2927",
+                        "inverse-primary": "#005bc2",
+                        "primary-dim": "#97b9ff",
+                        "surface-variant": "#252626",
+                        "error": "#ee7d77",
+                        "tertiary-container": "#69f6b8",
+                        "surface-dim": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#006544",
+                        "tertiary-dim": "#58e7ab",
+                        "primary-container": "#004493",
+                        "surface-container": "#191a1a",
+                        "on-surface": "#e7e5e5",
+                        "on-tertiary-container": "#005a3c",
+                        "on-secondary": "#1f2027",
+                        "primary": "#adc6ff",
+                        "on-primary": "#003d87"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0e0e0e; color: #e7e5e5; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-header { background: rgba(19, 19, 19, 0.6); backdrop-filter: blur(12px); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        body { min-height: max(884px, 100dvh); }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-6 h-20 w-full fixed top-0 z-50 bg-[#131313]/60 backdrop-blur-lg text-[#adc6ff] font-['Manrope'] font-bold tracking-[-0.02em] shadow-none bg-gradient-to-b from-[#131313] to-transparent">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-2xl" data-icon="shield">shield</span>
+<h1 class="text-xl font-extrabold text-[#e7e5e5] tracking-tighter">EntryShield</h1>
+<div class="ml-4 flex items-center gap-2 px-3 py-1 bg-tertiary-container/10 rounded-full border border-tertiary/20">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="text-[10px] font-bold text-tertiary tracking-widest uppercase">Sistema En Vivo</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-4 text-[#e7e5e5]/60 text-sm font-semibold">
+<span class="text-[#adc6ff]">Reportes</span>
+<span class="hover:text-[#e7e5e5] transition-colors cursor-pointer">Propiedades</span>
+<span class="hover:text-[#e7e5e5] transition-colors cursor-pointer">Cumplimiento</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 hover:border-primary transition-all duration-300 active:scale-98">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a professional security administrator in a dark studio setting with subtle blue backlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9ZWWevw9a5q77w-6GTC9-DlCLh-c7jN4IUbC5w9DHg99kYPXao8IXVBRqoQH1QS1l-TmEH-zHvkzgSOTQRYnz46nKWjhyVN7URHuMqfmtno5t5HxDMIoiT_faF7XLemNugo86QRRKl7mAl2r8nDtVFtOhxmiu-A5ylkPZ4vjvE-8kVbx8JM8IlbgeFc8uOBtP3ZyuN-mRKW1-dWZWQ7s6J7lg2HmjGC1cLuwxRKNrZAgkU31g79Y5t8Nk4vLqracQ5SiE2bSGNLT3"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto space-y-8">
+<!-- Header Section with Exports -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-2">
+<h2 class="text-4xl font-headline font-extrabold tracking-tight text-on-surface">Panel de Analíticas</h2>
+<p class="text-on-surface-variant font-medium">Monitoreo de protocolos de seguridad y flujo de visitantes en todas las propiedades.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-5 py-2.5 bg-surface-container-high hover:bg-surface-bright transition-all text-on-surface text-sm font-semibold rounded-lg">
+<span class="material-symbols-outlined text-lg" data-icon="picture_as_pdf">picture_as_pdf</span>
+                    Exportar PDF
+                </button>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-br from-primary to-primary-container text-on-primary text-sm font-bold rounded-lg shadow-lg shadow-primary/10 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-lg" data-icon="csv">csv</span>
+                    Exportar CSV
+                </button>
+</div>
+</section>
+<!-- Filters Bar -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-4 p-2 bg-surface-container-low rounded-xl">
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border-none text-on-surface text-sm rounded-lg focus:ring-1 focus:ring-primary py-3 pl-10">
+<option>Últimos 30 Días</option>
+<option>Últimos 7 Días</option>
+<option>Año a la Fecha</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-3 text-on-surface-variant text-lg" data-icon="calendar_today">calendar_today</span>
+</div>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border-none text-on-surface text-sm rounded-lg focus:ring-1 focus:ring-primary py-3 pl-10">
+<option>Todas las Propiedades</option>
+<option>Alpha Heights</option>
+<option>The Meridian</option>
+<option>Azure Villas</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-3 text-on-surface-variant text-lg" data-icon="apartment">apartment</span>
+</div>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border-none text-on-surface text-sm rounded-lg focus:ring-1 focus:ring-primary py-3 pl-10">
+<option>Todos los Estados</option>
+<option>Aprobado</option>
+<option>Denegado</option>
+<option>Marcado</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-3 text-on-surface-variant text-lg" data-icon="verified_user">verified_user</span>
+</div>
+<button class="bg-surface-bright text-on-surface font-bold text-xs uppercase tracking-widest rounded-lg hover:bg-outline-variant transition-colors">
+                Aplicar Filtros
+            </button>
+</section>
+<!-- Stats Grid (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Total Visitors -->
+<div class="bg-surface-container-high p-8 rounded-xl flex flex-col justify-between group hover:bg-surface-bright transition-all duration-300">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label text-xs font-bold tracking-widest uppercase">Total de Visitantes (30d)</span>
+<span class="material-symbols-outlined text-primary" data-icon="group">group</span>
+</div>
+<div class="mt-8">
+<h3 class="text-5xl font-headline font-extrabold text-on-surface">12,482</h3>
+<div class="flex items-center gap-2 mt-2 text-tertiary text-sm font-bold">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+                        +14.2% vs mes anterior
+                    </div>
+</div>
+</div>
+<!-- Denied Entries -->
+<div class="bg-surface-container-high p-8 rounded-xl flex flex-col justify-between hover:bg-surface-bright transition-all duration-300">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label text-xs font-bold tracking-widest uppercase">Entradas Denegadas</span>
+<span class="material-symbols-outlined text-error" data-icon="block">block</span>
+</div>
+<div class="mt-8">
+<h3 class="text-5xl font-headline font-extrabold text-on-surface">142</h3>
+<div class="flex items-center gap-2 mt-2 text-error text-sm font-bold">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+                        3 Reportes Críticos
+                    </div>
+</div>
+</div>
+<!-- Incident Rate -->
+<div class="bg-surface-container-high p-8 rounded-xl flex flex-col justify-between hover:bg-surface-bright transition-all duration-300">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label text-xs font-bold tracking-widest uppercase">Tasa de Incidentes</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="query_stats">query_stats</span>
+</div>
+<div class="mt-8">
+<h3 class="text-5xl font-headline font-extrabold text-on-surface">0.04%</h3>
+<div class="flex items-center gap-2 mt-2 text-on-surface-variant text-sm font-medium">
+                        Dentro del umbral de seguridad
+                    </div>
+</div>
+</div>
+</section>
+<!-- Main Chart & Sidebar Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Visits by Day Chart (Visual Representation) -->
+<div class="lg:col-span-2 bg-surface-container-high p-8 rounded-xl">
+<div class="flex justify-between items-center mb-10">
+<h3 class="font-headline font-bold text-xl">Visitas por Día</h3>
+<div class="flex gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-[10px] uppercase font-bold text-on-surface-variant">Autenticado</span>
+</div>
+</div>
+<!-- Mock Line Chart -->
+<div class="relative h-64 w-full flex items-end justify-between gap-2 border-b border-outline-variant pb-2">
+<div class="w-full bg-primary/20 rounded-t-sm h-[40%] hover:bg-primary/40 transition-all"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[55%] hover:bg-primary/40 transition-all"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[35%] hover:bg-primary/40 transition-all"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[80%] hover:bg-primary/40 transition-all"></div>
+<div class="w-full bg-primary rounded-t-sm h-[95%] shadow-[0_0_20px_rgba(173,198,255,0.3)]"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[60%] hover:bg-primary/40 transition-all"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[45%] hover:bg-primary/40 transition-all"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[70%] hover:bg-primary/40 transition-all"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[50%] hover:bg-primary/40 transition-all"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[65%] hover:bg-primary/40 transition-all"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[30%] hover:bg-primary/40 transition-all"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[85%] hover:bg-primary/40 transition-all"></div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">
+<span>Lun</span>
+<span>Mié</span>
+<span>Vie</span>
+<span>Dom</span>
+<span>Mar</span>
+<span>Jue</span>
+</div>
+</div>
+<!-- Frequent Visitors List -->
+<div class="bg-surface-container-high p-8 rounded-xl overflow-hidden flex flex-col">
+<h3 class="font-headline font-bold text-xl mb-6">Visitantes Frecuentes</h3>
+<div class="space-y-6 flex-1 overflow-y-auto hide-scrollbar">
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="badge">badge</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">J. Anderson</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Pasaporte • UK</p>
+</div>
+</div>
+<span class="text-xs font-bold text-primary">24 Entradas</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="badge">badge</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">M. Silva</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">ID • BR</p>
+</div>
+</div>
+<span class="text-xs font-bold text-primary">18 Entradas</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="badge">badge</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">L. Chen</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Licencia • CN</p>
+</div>
+</div>
+<span class="text-xs font-bold text-primary">15 Entradas</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="badge">badge</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">R. Novak</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Pasaporte • PL</p>
+</div>
+</div>
+<span class="text-xs font-bold text-primary">12 Entradas</span>
+</div>
+</div>
+<button class="mt-6 text-center text-[10px] font-bold tracking-widest text-primary uppercase hover:underline">Ver Registro Global</button>
+</div>
+</section>
+<!-- Properties with Most Activity -->
+<section class="bg-surface-container-low p-8 rounded-2xl">
+<h3 class="font-headline font-bold text-xl mb-8">Propiedades con Alta Actividad</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Alpha Heights -->
+<div class="relative h-48 rounded-xl overflow-hidden group cursor-pointer">
+<img alt="Alpha Heights" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="modern brutalist architecture skyscraper at dusk with dramatic orange and blue lighting and glass reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPk7yWDojyD0B6Wuc_9RrLlvOlEfvZilBqiGTyprnuPaIjPx3p3TCf8C88gOJ0i4bAObUMcKLzpjEkImMJaX3zu_nI8f2rWk1KFeyb6MnHPDmNqnXZgDy0K16XcFaZmtzzYKV31Fy-iO9qe9Ksr4dq0XxVda1VFElA_Oyb-zO-4enee2ayIAvY8JOpEixkvbaBoUtHR8x0DOcBBZ22VjG27gLtrCuJs7ChzXpwMjOqbC8SOmay-XPVD_ULM04GXhaesVfiSaxX9r4g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-4 flex flex-col justify-end">
+<p class="text-xs font-bold text-tertiary uppercase tracking-widest mb-1">Tráfico Pico</p>
+<h4 class="font-bold text-on-surface">Alpha Heights</h4>
+<div class="flex items-center justify-between mt-2">
+<span class="text-[10px] text-on-surface/60">4.2k Visitas</span>
+<span class="text-[10px] bg-tertiary/20 text-tertiary px-2 py-0.5 rounded-full font-bold">Seguro</span>
+</div>
+</div>
+</div>
+<!-- The Meridian -->
+<div class="relative h-48 rounded-xl overflow-hidden group cursor-pointer">
+<img alt="The Meridian" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="luxury modern mansion with pool and floor-to-ceiling windows under a starry night sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKLieLQYpEoT0vtDyJZpwqYCM-8IyO_cBMkZ3qYhujcXCLm-bm-kPZOXPnvLovsz3dMfY-DNeMm4-CedKBe5IOElWfU71a5IOvKzbgCnAea_lKLOGPuNIrv673eqSxn7bWYoyG3FmQsovufuQKKy6ACxbY-6fEs2hb1j3nD3PzJ8u9qZ2qZPSYqfY7wG4JSOAOd7aJKsz99lVqtMcmhooWRmDYtilBbPweW5Ty34sdhY8n7VICjd7hEorpRzpGiAuA5Ir0iutd5SoA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-4 flex flex-col justify-end">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Estable</p>
+<h4 class="font-bold text-on-surface">The Meridian</h4>
+<div class="flex items-center justify-between mt-2">
+<span class="text-[10px] text-on-surface/60">3.1k Visitas</span>
+<span class="text-[10px] bg-secondary/20 text-secondary px-2 py-0.5 rounded-full font-bold">Normal</span>
+</div>
+</div>
+</div>
+<!-- Azure Villas -->
+<div class="relative h-48 rounded-xl overflow-hidden group cursor-pointer">
+<img alt="Azure Villas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="white minimalist contemporary villas overlooking a bright turquoise ocean with soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGT1n0KMS8kOlrIF7wC6Bo__jfIa_yyUYvqY7Z5A2GUcgojG9yA5M2o2TURKcamV2SpSR5g_OQOtWwEAmKnEwrxjlYZuVsN7hZTZlPpCq390VGFVklFWZF2Zzxduy7U7EsPTXi7qjegWc-1CBSNSjVmHmgf_4js8RwQtJEIrZn7QaqaXStT_HsJumXfiDUBi4inwiVbZ_RTXvM4Ku4kJCCkbCFQMrBKdvNbRkqmSBb8WUDzWh3Ntw0Z-K8jimYnhzHdX5a-P6SwZMB"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-4 flex flex-col justify-end">
+<p class="text-xs font-bold text-error uppercase tracking-widest mb-1">Alerta Incidente</p>
+<h4 class="font-bold text-on-surface">Azure Villas</h4>
+<div class="flex items-center justify-between mt-2">
+<span class="text-[10px] text-on-surface/60">2.8k Visitas</span>
+<span class="text-[10px] bg-error/20 text-error px-2 py-0.5 rounded-full font-bold">Revisión</span>
+</div>
+</div>
+</div>
+<!-- Onyx Plaza -->
+<div class="relative h-48 rounded-xl overflow-hidden group cursor-pointer">
+<img alt="Onyx Plaza" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="glass facade of a corporate headquarters building at night reflecting street lights and dark clouds" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaF6FxHhkEizjGK5KxNfl0f_LRFFwE92zGe9sRZPUkB0psi2miXeqJDGIurfX__FrpEg7Fd2S_AqgQh6arZvbnwpno7MVLxc8nPLqxSOa-qTt1wOYE1G_j19faCqqBQEH-max0p55W3I9SgN7ZAdI9F3_p_zVYSvePsp9KukNk3uJ0gSWXb2nDaXFThm_OfzsMxBVPRPRxzWaJpATv-uWims39gKvUrMP5irjO0RuECumckEcD9ULRGNN13mJm9p4yOLnCc1XhKCUx"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-4 flex flex-col justify-end">
+<p class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Sitio Nuevo</p>
+<h4 class="font-bold text-on-surface">Onyx Plaza</h4>
+<div class="flex items-center justify-between mt-2">
+<span class="text-[10px] text-on-surface/60">1.2k Visitas</span>
+<span class="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded-full font-bold">Activo</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#131313]/80 backdrop-blur-xl border-t border-[#e7e5e5]/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] rounded-t-2xl font-['Inter'] text-[11px] font-medium tracking-wide uppercase">
+<div class="flex flex-col items-center justify-center bg-[#1f2020] text-[#adc6ff] rounded-xl px-4 py-2 active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span>Panel</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="search">search</span>
+<span>Buscar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="group">group</span>
+<span>Visitantes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e7e5e5]/40 px-4 py-2 hover:text-[#e7e5e5] active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="warning">warning</span>
+<span>Incidentes</span>
+</div>
+</nav>
+</body></html>
