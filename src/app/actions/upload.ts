@@ -5,44 +5,20 @@ import path from "path";
 
 export async function uploadSelfieBase64(base64Image: string, visitorId?: string) {
   try {
-    const base64Data = base64Image.replace(/^data:image\/\w+;base64,/, "");
-    const buffer = Buffer.from(base64Data, "base64");
-
-    const uploadsDir = path.join(process.cwd(), "public", "uploads");
-    if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true });
-    }
-
-    const filename = `selfie_${visitorId || Date.now()}_${Math.random().toString(36).substring(7)}.jpg`;
-    const filepath = path.join(uploadsDir, filename);
-
-    fs.writeFileSync(filepath, buffer);
-
-    return { success: true, url: `/uploads/${filename}`, visitorId };
+    // Vercel Serverless Hack: Instead of writing to the local `/public/uploads` directory (which crashes because Serverless is read-only),
+    // we bypass the file system entirely and pass the optimized DataURI directly to the Database to be saved as TEXT.
+    return { success: true, url: base64Image, visitorId };
   } catch (error: unknown) {
     console.error("Upload error:", error);
-    return { success: false, error: "Error al guardar la fotografía." };
+    return { success: false, error: "Error al capturar la fotografía." };
   }
 }
 
 export async function uploadIdCardBase64(base64Image: string, visitorId?: string) {
   try {
-    const base64Data = base64Image.replace(/^data:image\/\w+;base64,/, "");
-    const buffer = Buffer.from(base64Data, "base64");
-
-    const uploadsDir = path.join(process.cwd(), "public", "uploads");
-    if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true });
-    }
-
-    const filename = `idcard_${visitorId || Date.now()}_${Math.random().toString(36).substring(7)}.jpg`;
-    const filepath = path.join(uploadsDir, filename);
-
-    fs.writeFileSync(filepath, buffer);
-
-    return { success: true, url: `/uploads/${filename}`, visitorId };
+    return { success: true, url: base64Image, visitorId };
   } catch (error: unknown) {
     console.error("Upload error:", error);
-    return { success: false, error: "Error al guardar el documento." };
+    return { success: false, error: "Error al capturar el documento." };
   }
 }
