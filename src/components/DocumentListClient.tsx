@@ -80,27 +80,28 @@ export default function DocumentListClient({ visitors }: { visitors: any[] }) {
             }
         };
 
-        let offsetY = fileOffsetY + 20;
-
         if (frontUrl) {
            const finalFrontUrl = await convertUrlToBase64(frontUrl);
-           doc.setFontSize(10);
-           doc.text("Frente del Documento:", 20, offsetY);
-           addImageProportionally(doc, finalFrontUrl, 20, offsetY + 5, 80, 50);
+           doc.addPage();
+           doc.setFontSize(14);
+           doc.text("Frente del Documento:", 20, 20);
+           // Maximized size for A4 page (A4 dimensions: 210 x 297 mm)
+           addImageProportionally(doc, finalFrontUrl, 10, 30, 190, 240);
         }
         if (backUrl) {
            const finalBackUrl = await convertUrlToBase64(backUrl);
-           doc.setFontSize(10);
-           doc.text("Reverso del Documento:", 110, offsetY);
-           addImageProportionally(doc, finalBackUrl, 110, offsetY + 5, 80, 50);
+           doc.addPage();
+           doc.setFontSize(14);
+           doc.text("Reverso del Documento:", 20, 20);
+           addImageProportionally(doc, finalBackUrl, 10, 30, 190, 240);
         }
         
         if (visitor.selfieUrl) {
            const finalSelfieUrl = await convertUrlToBase64(visitor.selfieUrl);
-           offsetY += 65;
-           doc.setFontSize(10);
-           doc.text("Fotografia Facial / Biometria:", 20, offsetY);
-           addImageProportionally(doc, finalSelfieUrl, 20, offsetY + 5, 60, 60);
+           doc.addPage();
+           doc.setFontSize(14);
+           doc.text("Fotografia Facial / Biometria:", 20, 20);
+           addImageProportionally(doc, finalSelfieUrl, 10, 30, 190, 240);
         }
         
         const fileName = `Documentos_${visitor.name.replace(/\s+/g, '_')}.pdf`;
